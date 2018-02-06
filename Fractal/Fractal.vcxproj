@@ -107,10 +107,17 @@ xcopy /Y /D /i "..\Libraries\SDL2_image-2.0.2\lib\x86\*.dll" "$(OutDir)\*.dll"</
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\Libraries\SDL2_image-2.0.2\include;..\Libraries\SDL2-2.0.7\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>..\Libraries\SDL2_image-2.0.2\lib\x64;..\Libraries\SDL2-2.0.7\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>copy "..\Libraries\SDL2-2.0.7\lib\x64\SDL2.dll" "$(OutDir)\SDL2.dll"
+xcopy /Y /D /i "..\Libraries\SDL2_image-2.0.2\lib\x64\*.dll" "$(OutDir)\*.dll"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
