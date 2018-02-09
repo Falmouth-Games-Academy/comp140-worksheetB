@@ -37,3 +37,5 @@ Getting all objects photographed ends the game.
 
 ## Strech Goals
 * Might also think of an interesting ending.
+* Think of a different control for buttons - maybe sensitive things.
+* Adding vibration to the controller when the rocket starts flying.
