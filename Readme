@@ -1,0 +1,27 @@
+Alt controller game idea:
+
+Infinite runner with walls that need to be turned off before the player hits them.
+also holes to jump and a flip mechanic where you run along the ceiling
+Walls will be colour coordinated to the controller, needed the correct matching 
+colour input to turn them off.
+During flip mechanic colours will be incorrect and the correct colour will be
+written in the wall to add confusion.
+Inputs made that dont match a wall on screen increase the the runner speed.
+this can be good or bad depending as you can get a higher score faster, but also 
+increases difficulty
+Incorrect jumps are fine, incorrect flips will kill the player.
+
+Controller ideas:
+Idea 1:
+LED lights matching the wall colours set infront of light sensors with gaps between
+Player uses fingers to block the light from the LED to input
+Thumb to jump
+An additional button or something else for flip mechanic
+All built into a base where the hand can be rested
+
+Idea 2:
+Glove with bend resitance sensors on each finger
+fingers designated colour somehow, maybe LED
+bend fingers and thumb to input
+for flip either additional button, or sensor to tell if hand is upside down
+make player turn hand over for flip
