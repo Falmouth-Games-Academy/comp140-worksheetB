@@ -15,7 +15,7 @@ In the first phase, one button will start the rocket engine to start flying up.
 And the other button will drop fuel tanks that have ended.
 The player has to very slowly push the sticker up so that the rocket slowly starts flying.
 If the player doesn't push the sticker or push the sticker suddenly, the rocket will blow up.
-When the fuel tanks will end, the player will be notified to drop them out and start the main engine by pressing right button again.
+When the fuel tanks empty, the player will be notified to drop them out and start the main engine by pressing right button again.
 The player will get to phase 2 when he reaches certain height.
 
 In phase 2, the player will be managing to get to Mars while avoiding space litter at the beginning and then asteroids.
