@@ -7,7 +7,7 @@ Second phase is trying to get to Mars while avoiding space litter and asteroids.
 
 Third phase is getting all objects photographed with your Mars rover.
 
-## Alt-controller:
+## The Game:
 
 The controller is going to have 2 stickers, one of which is only going up and down (left one) and the other one to the right and left (right one).
 In addition, it will have 2 buttons, which will be used differently depending on the game phase.
@@ -32,10 +32,14 @@ Standard controls: left sticker - forwards or backwards, right sticker - turns t
 Right button will make a photograph, whereas left button will make the Mars rover's "head" go up.
 At this point, the player can't move and the stickers will turn his head accordingly.
 This is made for objects that will be on the ground, as the Mars rover can't look straight down.
-Pressing left button again will get the Mars rover to normal.
+Pressing left button again will get the Mars rover back to normal.
 Getting all objects photographed ends the game.
 
 ## Strech Goals
 * Might also think of an interesting ending.
-* Think of a different control for buttons - maybe sensitive things.
 * Adding vibration to the controller when the rocket starts flying.
+
+## Differentiation of the controller
+* Two big stickers with a button on top of it (like in the helicopter).
+* Think of a different control for buttons - maybe sensitive things (like touchpad?).
+* The stickers could also be attached to a chair's handles.
