@@ -108,6 +108,7 @@ xcopy /Y /D /i "..\Libraries\SDL2_image-2.0.2\lib\x86\*.dll" "$(OutDir)\*.dll"</
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\Libraries\SDL2_image-2.0.2\include;..\Libraries\SDL2-2.0.7\include</AdditionalIncludeDirectories>
+      <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
