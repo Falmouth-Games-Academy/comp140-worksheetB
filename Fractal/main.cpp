@@ -1,11 +1,12 @@
-// main.cpp : Defines the entry point for the console application.
+﻿// main.cpp : Defines the entry point for the console application.
 // Basic application layout source from the following tutorial
 // http://www.willusher.io/pages/sdl2/
 
 #include "stdafx.h"
 
 const unsigned int NumberOfIterations = 255;
-
+const unsigned int windowWidth = 800;
+const unsigned int windowHeight = 800;
 
 Uint32 mandelbrot(double x, double y)
 {
@@ -28,9 +29,7 @@ Uint32 mandelbrot(double x, double y)
 
 int main(int, char**) 
 {
-	bool fractal1 = true;
-	int windowWidth = 800;
-	int windowHeight = 800;
+	bool fractal1 = false;
 	//Initialise the Video Part of SDL2
 	if (SDL_Init(SDL_INIT_VIDEO) != 0) {
 		//Print out an error message to the screen if this fails
@@ -77,12 +76,15 @@ int main(int, char**)
 
 	Uint64 NOW = SDL_GetPerformanceCounter();
 	Uint64 LAST = 0;
+	double seconds = 0;
 	while (!quit)
 	{
 		
 		NOW = SDL_GetPerformanceCounter();
 		LAST = NOW;
 		double deltaTime = (double)((NOW - LAST) * 1000 / SDL_GetPerformanceFrequency()); //gets Deltatime
+		seconds += deltaTime;
+
 
 		//Check for Messages from SDL
 		while (SDL_PollEvent(&event)) {
@@ -119,10 +121,20 @@ int main(int, char**)
 		}
 		else //Dragon curve
 		{
-			for (int i = 0; i < NumberOfIterations; i++)
+			DragonCurve CurveObject;
+			if (seconds>3)
 			{
-				//unsigned int pixelPosition = pixelY * (pitch / pixelFormat->BytesPerPixel) + pixelX;
-				//pixels[pixelPosition] =
+				seconds = 0;
+				CurveObject.NextIteration();
+			}
+			for (double pixelY = 0; pixelY < windowHeight; pixelY++)
+			{
+				for (double pixelX = 0; pixelX < windowWidth; pixelX++)
+				{
+					unsigned int pixelPosition = pixelY * (pitch / pixelFormat->BytesPerPixel) + pixelX;
+					pixels[pixelPosition] = CurveObject.DrawCurve(pixelX,pixelY);
+
+				}
 			}
 		}
 
@@ -144,3 +156,101 @@ int main(int, char**)
 
 	return 0;
 }
+
+class DragonCurve
+{
+	const unsigned int LengthOfLine = 5;
+private:
+	std::string curve = "FX";
+	std::string::iterator curveItor;
+	bool curveLoc[windowWidth][windowHeight];
+	void setCurveIntoArray()
+	{
+		for (int y = 0; y < windowHeight; y++)
+		{
+			for (int x = 0; x < windowWidth; x++)
+			{
+				curveLoc[x][y] = false;
+			}
+		}
+		int direction = 0;
+		int currentPos[2] = { windowWidth / 2,windowHeight / 2 };
+		for (int pos = 0; pos < curve.length(); pos++)
+		{
+			if (curve[pos] = '+')
+			{
+				direction++;
+				if (direction > 3) { direction = 0; };
+			}
+			else if (curve[pos] = '-')
+			{
+				direction--;
+				if (direction < 0) { direction = 3; };
+			}
+			else if (curve[pos] = 'F')
+			{
+				if (direction == 0)
+				{
+					for (int i = 0; i < LengthOfLine; i++)
+					{
+						curveLoc[currentPos[0]][currentPos[1] - i] = true;
+					}
+					currentPos[1] -= LengthOfLine;
+				}
+				else if (direction == 1)
+				{
+					for (int i = 0; i < LengthOfLine; i++)
+					{
+						curveLoc[currentPos[0] + i][currentPos[1]] = true;
+					}
+					currentPos[0] += LengthOfLine;
+				}
+				else if (direction == 2)
+				{
+					for (int i = 0; i < LengthOfLine; i++)
+					{
+						curveLoc[currentPos[0]][currentPos[1] + i] = true;
+					}
+					currentPos[1] += LengthOfLine;
+				}
+				else if (direction == 3)
+				{
+					for (int i = 0; i < LengthOfLine; i++)
+					{
+						curveLoc[currentPos[0] - i][currentPos[1]] = true;
+					}
+					currentPos[0] -= LengthOfLine;
+				}
+			}
+		}
+	}
+public:
+	Uint32 DrawCurve(int x, int y)
+	{
+		if (curveLoc[x][y])
+		{
+			return SDL_MapRGB(SDL_AllocFormat(SDL_PIXELFORMAT_RGB888), 0, 0, 0);
+		}
+		return SDL_MapRGB(SDL_AllocFormat(SDL_PIXELFORMAT_RGB888), 255, 255, 255);
+	}
+	void NextIteration()
+	{
+		for (int pos = 0; pos<curve.length(); pos++)
+		{
+			if (curve[pos] == 'X')
+			{
+				curve.erase(pos);
+				curve.insert(pos, "X+YF+");
+				pos += 4;
+			}
+			else if (curve[pos] == 'Y')
+			{
+				curve.erase(pos);
+				curve.insert(pos, "−FX−Y");
+				pos += 4;
+			}
+		}
+		setCurveIntoArray();
+	}
+
+};

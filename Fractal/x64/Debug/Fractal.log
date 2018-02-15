@@ -1,7 +1,18 @@
 ﻿  main.cpp
-\\tremictssan.fal.ac.uk\userdata\bw202426\my documents\fractalworksheet\comp140-worksheetb\fractal\main.cpp(19): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-\\tremictssan.fal.ac.uk\userdata\bw202426\my documents\fractalworksheet\comp140-worksheetb\fractal\main.cpp(111): warning C4244: 'initializing': conversion from 'double' to 'unsigned int', possible loss of data
-  Fractal.vcxproj -> \\tremictssan.fal.ac.uk\userdata\BW202426\My Documents\FractalWorksheet\comp140-worksheetB\Fractal\x64\Debug\Fractal.exe
-  Fractal.vcxproj -> \\tremictssan.fal.ac.uk\userdata\BW202426\My Documents\FractalWorksheet\comp140-worksheetB\Fractal\x64\Debug\Fractal.pdb (Partial PDB)
-          1 file(s) copied.
-  0 File(s) copied
+\\tremictssan.fal.ac.uk\userdata\bw202426\my documents\fractalworksheet\comp140-worksheetb\fractal\main.cpp(20): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+\\tremictssan.fal.ac.uk\userdata\bw202426\my documents\fractalworksheet\comp140-worksheetb\fractal\main.cpp(113): warning C4244: 'initializing': conversion from 'double' to 'unsigned int', possible loss of data
+\\tremictssan.fal.ac.uk\userdata\bw202426\my documents\fractalworksheet\comp140-worksheetb\fractal\main.cpp(124): error C2065: 'DragonCurve': undeclared identifier
+\\tremictssan.fal.ac.uk\userdata\bw202426\my documents\fractalworksheet\comp140-worksheetb\fractal\main.cpp(124): error C2146: syntax error: missing ';' before identifier 'CurveObject'
+\\tremictssan.fal.ac.uk\userdata\bw202426\my documents\fractalworksheet\comp140-worksheetb\fractal\main.cpp(124): error C2065: 'CurveObject': undeclared identifier
+\\tremictssan.fal.ac.uk\userdata\bw202426\my documents\fractalworksheet\comp140-worksheetb\fractal\main.cpp(128): error C2065: 'CurveObject': undeclared identifier
+\\tremictssan.fal.ac.uk\userdata\bw202426\my documents\fractalworksheet\comp140-worksheetb\fractal\main.cpp(128): error C2228: left of '.NextIteration' must have class/struct/union
+  \\tremictssan.fal.ac.uk\userdata\bw202426\my documents\fractalworksheet\comp140-worksheetb\fractal\main.cpp(128): note: type is 'unknown-type'
+\\tremictssan.fal.ac.uk\userdata\bw202426\my documents\fractalworksheet\comp140-worksheetb\fractal\main.cpp(134): warning C4244: 'initializing': conversion from 'double' to 'unsigned int', possible loss of data
+\\tremictssan.fal.ac.uk\userdata\bw202426\my documents\fractalworksheet\comp140-worksheetb\fractal\main.cpp(135): error C2065: 'CurveObject': undeclared identifier
+\\tremictssan.fal.ac.uk\userdata\bw202426\my documents\fractalworksheet\comp140-worksheetb\fractal\main.cpp(135): error C2228: left of '.DrawCurve' must have class/struct/union
+  \\tremictssan.fal.ac.uk\userdata\bw202426\my documents\fractalworksheet\comp140-worksheetb\fractal\main.cpp(135): note: type is 'unknown-type'
+\\tremictssan.fal.ac.uk\userdata\bw202426\my documents\fractalworksheet\comp140-worksheetb\fractal\main.cpp(249): warning C4566: character represented by universal-character-name '\u2212' cannot be represented in the current code page (1252)
+\\tremictssan.fal.ac.uk\userdata\bw202426\my documents\fractalworksheet\comp140-worksheetb\fractal\main.cpp(194): warning C4018: '<': signed/unsigned mismatch
+\\tremictssan.fal.ac.uk\userdata\bw202426\my documents\fractalworksheet\comp140-worksheetb\fractal\main.cpp(202): warning C4018: '<': signed/unsigned mismatch
+\\tremictssan.fal.ac.uk\userdata\bw202426\my documents\fractalworksheet\comp140-worksheetb\fractal\main.cpp(210): warning C4018: '<': signed/unsigned mismatch
+\\tremictssan.fal.ac.uk\userdata\bw202426\my documents\fractalworksheet\comp140-worksheetb\fractal\main.cpp(218): warning C4018: '<': signed/unsigned mismatch
