@@ -7,8 +7,8 @@
 
 int main(int, char**)
 {
-	double windowWidth = 800;
-	double windowHeight = 800;
+	int windowWidth = 800;
+	int windowHeight = 800;
 	//Initialise the Video Part of SDL2
 	if (SDL_Init(SDL_INIT_VIDEO) != 0) {
 		//Print out an error message to the screen if this fails
@@ -68,57 +68,25 @@ int main(int, char**)
 
 		//do drawing here
 		SDL_LockTexture(fractalTexture, NULL, (void**)&pixels, &pitch);
-		/*
-		SDL_Window *window;
-		SDL_Renderer *renderer;
-		SDL_CreateWindowAndRenderer(windowWidth, windowHeight, SDL_WINDOW_OPENGL | SDL_WINDOW_BORDERLESS, &window, &renderer);
-		SDL_SetWindowPosition(window, 65, 126);
-
-
-		enum { PaletteSize = 32 };
-		int palette[PaletteSize + 1][3];
-		for (int i = 0; i <= PaletteSize; ++i)
-		{
-			palette[i][0] = i < 2 * PaletteSize / 3 ? i * 255 * 3 / (2 * PaletteSize) : 255;
-			palette[i][1] = i < PaletteSize / 3 ? 0 : (i - PaletteSize / 3) * 255 * 3 / (2 * PaletteSize);
-			palette[i][2] = 0;
-		}
-
-		for (int y = 0; y < windowHeight; ++y)
-			for (int x = 0; x < windowWidth; ++x)
-			{
-				std::complex<double> c(0.5 * (x - (windowWidth - windowHeight) / 2) / windowHeight * 4.0 - 2.0, 0.5 * y / windowHeight * 4.0 - 2.0);
-				std::complex<double> z(0.0, 0.0);
-				int cnt = 0;
-				while (cnt < PaletteSize)
-				{
-					z = z * z + c;
-					if (abs(z) > 2.0)
-						break;
-					++cnt;
-				}
-				SDL_SetRenderDrawColor(renderer, palette[cnt][0], palette[cnt][1], palette[cnt][2], 0xff);
-				SDL_RenderDrawPoint(renderer, x, y);
-			} */
 		
 		for (int pixelY = 0; pixelY < windowHeight; pixelY++) {
 			// TODO: Map the y coordinate into the range minY to maxY
-			double y0 = (pixelY / windowHeight) * (maxY - minY) + minY;
+			double y0 = (pixelY / (double)windowHeight) * (maxY - minY) + minY;
 
 			for (int pixelX = 0; pixelX < windowWidth; pixelX++) {
 				// TODO: Map the x coordinate into the range minX to maxX
-				double x0 = (pixelX / windowWidth) * (maxX - minX) + minX;
+				double x0 = (pixelX / (double)windowWidth) * (maxX - minX) + minX;
 
 				unsigned int pixelPosition = pixelY * (pitch / pixelFormat->BytesPerPixel) + pixelX;
 
 				// TODO: implement the algorithm to colour a single pixel (x0, y0) of the fractal
 				// The code below simply fills the screen with random pixels
 
-				int i = 1;
+				int i = 0;
 				int maxIterations = 50;
 
-				double lastX = x0;
-				double lastY = y0;
+				double lastX = 0;
+				double lastY = 0;
 
 				bool isTrue = false;
 
@@ -134,16 +102,19 @@ int main(int, char**)
 						isTrue = true;
 						break;
 					}
+
+					lastX = tempX;
+					lastY = tempY;
 				}
 
 				if (isTrue == true)
 				{
-					Uint32 colour = SDL_MapRGB(pixelFormat, rand() % 255, 0, 0);
+					Uint32 colour = SDL_MapRGB(pixelFormat, 0, 0, 0);
 					pixels[pixelPosition] = colour;
 				}
 				else
 				{
-					Uint32 colour = SDL_MapRGB(pixelFormat, 0, 0, rand() % 255);
+					Uint32 colour = SDL_MapRGB(pixelFormat, 255, 0, 0);
 					pixels[pixelPosition] = colour;
 				}
 
