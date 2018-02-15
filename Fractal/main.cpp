@@ -71,23 +71,38 @@ int main(int, char**)
 
 
 		for (int pixelY = 0; pixelY < windowHeight; pixelY++) {
-			// TODO: Map the y coordinate into the range minY to maxY
-			//double y0 =
+			// Map the y coordinate into the range minY to maxY
+			int scaledPixelY = (pixelY / windowWidth) * (maxY - minY) + minY;
+			int doubleScaledPixelY = scaledPixelY * 2;
+
 			for (int pixelX = 0; pixelX < windowWidth; pixelX++){
 
-				// TODO: Map the x coordinate into the range minX to maxX
-				//double x0 =
+				// Map the x coordinate into the range minX to maxX
+				int scaledPixelX = (pixelX / windowWidth) * (maxX - minX) + minX;
+				int doubleScaledPixelX = scaledPixelX * 2;
 
 				unsigned int pixelPosition = pixelY * (pitch / pixelFormat->BytesPerPixel) + pixelX;
 
 				// TODO: implement the algorithm to colour a single pixel (x0, y0) of the fractal
-				// The code below simply fills the screen with random pixels
-
-				// Write the pixel
-				// TODO: change this for desired pixel colour value
-				Uint32 colour = SDL_MapRGB(pixelFormat, rand()%255, rand() % 255, rand() % 255);
-				// Now we can set the pixel(s) we want.
-				pixels[pixelPosition] = colour;
+				// 
+				for (int i = 0; i = 200; i++) {
+					int xValue = (scaledPixelX * scaledPixelX) - (scaledPixelY * scaledPixelY) + scaledPixelX;
+					int yValue = (2 * scaledPixelX * scaledPixelY) + scaledPixelY;
+					int smallestValue = (xValue * xValue) + (yValue * yValue);
+					if (smallestValue >= 4) {
+						// Set Pixel colour
+						Uint32 colour = SDL_MapRGB(pixelFormat, smallestValue, 255, 255);
+						// Now we can set the pixel(s) we want.
+						pixels[pixelPosition] = colour;
+						break;
+					}
+					else {
+						// Set Pixel colour
+						Uint32 colour = SDL_MapRGB(pixelFormat, 255, 255, 255);
+						// Now we can set the pixel(s) we want.
+						pixels[pixelPosition] = colour;
+					}
+				}
 			}
 		}
 
