@@ -1,0 +1,7 @@
+﻿  main.cpp
+\\tremictssan.fal.ac.uk\userdata\bw202426\my documents\fractalworksheet\comp140-worksheetb\fractal\main.cpp(19): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+\\tremictssan.fal.ac.uk\userdata\bw202426\my documents\fractalworksheet\comp140-worksheetb\fractal\main.cpp(111): warning C4244: 'initializing': conversion from 'double' to 'unsigned int', possible loss of data
+  Fractal.vcxproj -> \\tremictssan.fal.ac.uk\userdata\BW202426\My Documents\FractalWorksheet\comp140-worksheetB\Fractal\x64\Debug\Fractal.exe
+  Fractal.vcxproj -> \\tremictssan.fal.ac.uk\userdata\BW202426\My Documents\FractalWorksheet\comp140-worksheetB\Fractal\x64\Debug\Fractal.pdb (Partial PDB)
+          1 file(s) copied.
+  0 File(s) copied

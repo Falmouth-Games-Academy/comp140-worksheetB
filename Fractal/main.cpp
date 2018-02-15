@@ -4,8 +4,31 @@
 
 #include "stdafx.h"
 
+const unsigned int NumberOfIterations = 255;
+
+
+Uint32 mandelbrot(double x, double y)
+{
+	double yComponent = y;
+	double xComponent = x;
+
+	for (int i = 0; i < NumberOfIterations; i++)
+	{
+		if (xComponent*xComponent + yComponent*yComponent >= 4)
+		{
+			i = (log(i) / log(255)) * 255;
+			return SDL_MapRGB(SDL_AllocFormat(SDL_PIXELFORMAT_RGB888), i, 0, i);
+		}
+		double tempYComponent = yComponent;
+		yComponent = (2 * xComponent * yComponent) + y;
+		xComponent = (xComponent*xComponent) - (tempYComponent*tempYComponent) + x;
+	}
+	return SDL_MapRGB(SDL_AllocFormat(SDL_PIXELFORMAT_RGB888), 50, 0,50);
+}
+
 int main(int, char**) 
 {
+	bool fractal1 = true;
 	int windowWidth = 800;
 	int windowHeight = 800;
 	//Initialise the Video Part of SDL2
@@ -51,8 +74,16 @@ int main(int, char**)
 	//Holds events coming from SDL
 	SDL_Event event;
 	//Game Loop, while quit is false
+
+	Uint64 NOW = SDL_GetPerformanceCounter();
+	Uint64 LAST = 0;
 	while (!quit)
 	{
+		
+		NOW = SDL_GetPerformanceCounter();
+		LAST = NOW;
+		double deltaTime = (double)((NOW - LAST) * 1000 / SDL_GetPerformanceFrequency()); //gets Deltatime
+
 		//Check for Messages from SDL
 		while (SDL_PollEvent(&event)) {
 			//quit is generated when red cross is clicked
@@ -69,25 +100,29 @@ int main(int, char**)
 		SDL_LockTexture(fractalTexture, NULL, (void**)&pixels, &pitch);
 
 
+		if (fractal1) // Mandlebrot Set
+		{
+			for (double pixelY = 0; pixelY < windowHeight; pixelY++)
+			{
+				double yLocation = (pixelY / windowHeight)*(maxY - minY) + minY;
+				for (double pixelX = 0; pixelX < windowWidth; pixelX++)
+				{
+					double xLocation = (pixelX / windowWidth)*(maxX - minX) + minX;
+					unsigned int pixelPosition = pixelY * (pitch / pixelFormat->BytesPerPixel) + pixelX;
 
-		for (int pixelY = 0; pixelY < windowHeight; pixelY++) {
-			// TODO: Map the y coordinate into the range minY to maxY
-			//double y0 =
-			for (int pixelX = 0; pixelX < windowWidth; pixelX++){
 
-				// TODO: Map the x coordinate into the range minX to maxX
-				//double x0 =
-
-				unsigned int pixelPosition = pixelY * (pitch / pixelFormat->BytesPerPixel) + pixelX;
-
-				// TODO: implement the algorithm to colour a single pixel (x0, y0) of the fractal
-				// The code below simply fills the screen with random pixels
-
-				// Write the pixel
-				// TODO: change this for desired pixel colour value
-				Uint32 colour = SDL_MapRGB(pixelFormat, rand()%255, rand() % 255, rand() % 255);
-				// Now we can set the pixel(s) we want.
-				pixels[pixelPosition] = colour;
+					
+					// Now we can set the pixel(s) we want.
+					pixels[pixelPosition] = mandelbrot(xLocation, yLocation);
+				}
+			}
+		}
+		else //Dragon curve
+		{
+			for (int i = 0; i < NumberOfIterations; i++)
+			{
+				//unsigned int pixelPosition = pixelY * (pitch / pixelFormat->BytesPerPixel) + pixelX;
+				//pixels[pixelPosition] =
 			}
 		}
 
