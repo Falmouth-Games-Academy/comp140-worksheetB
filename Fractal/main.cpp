@@ -87,7 +87,7 @@ int main(int, char**)
 
 				// Write the pixel
 				// TODO: change this for desired pixel colour value
-				Uint32 colour = SDL_MapRGB(pixelFormat, rand(x0)%255, rand(y0) % 255, rand() % 255);
+				Uint32 colour = SDL_MapRGB(pixelFormat, rand()%255, rand() % 255, rand() % 255);
 				// Now we can set the pixel(s) we want.
 				pixels[pixelPosition] = colour;
 			}
