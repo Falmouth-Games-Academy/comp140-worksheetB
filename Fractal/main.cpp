@@ -21,7 +21,7 @@ int main(int, char**)
 	}
 
 	//Creare a 800x800 window with the title Fractal
-	SDL_Window *window = SDL_CreateWindow("Fractal", 100, 100, windowWidth, windowHeight, SDL_WINDOW_SHOWN);
+	SDL_Window *window = SDL_CreateWindow("Fractal", 1000, 200, windowWidth, windowHeight, SDL_WINDOW_SHOWN);
 	if (window == nullptr) {
 		//Print out error if this fails
 		std::cout << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
@@ -39,7 +39,7 @@ int main(int, char**)
 		return 1;
 	}
 
-	SDL_Surface * image = SDL_LoadBMP("textimage.bmp");
+	
 
 	//this stores the pixels retrieved from the texture
 	Uint32 * pixels = NULL;
@@ -49,13 +49,13 @@ int main(int, char**)
 	SDL_Texture * fractalTexture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STREAMING, windowWidth, windowHeight);
 	//Get the pixel format the texture
 	SDL_PixelFormat * pixelFormat = SDL_AllocFormat(SDL_PIXELFORMAT_RGB888);
-
+	
 
 	// Minimum and maximum coordinates for the fractal
 	const double minX = -2, maxX = 1, minY = -1.5, maxY = 1.5;
 
-	// How to get a string/sentence with spaces
-	//cout << "Enter 1 or 2 to choose a fractal, 1 for Mandlebrot, 2 for Julia:\n>";
+	// Show instructions on the console window
+	cout << "Press 1 or 2 to choose a fractal, 1 for Mandlebrot, 2 for Julia:\n>";
 
 	//Controls the game loop
 	bool quit = false;
@@ -111,6 +111,7 @@ int main(int, char**)
 			{
 				/* The colour to set all pixels initially */
 				Uint32 colourPixel = SDL_MapRGB(pixelFormat, 0, 0, 0);
+				
 
 				// Map the x coordinate into the range minX to maxX
 				double x0 = (pixelX / (double)windowWidth) * (maxX - minX) + minX;
@@ -155,10 +156,11 @@ int main(int, char**)
 					{
 						/* Write the pixel. Experimenting with various different colour combinations*/
 						colourPixel = SDL_MapRGB(pixelFormat, iteration*255/ 300, iteration*iteration, thisY * thisX / iteration);
-						//colourPixel = SDL_MapRGB(pixelFormat, iteration%255, iteration % 255, iteration % 200);
+						//colourPixel = SDL_MapRGB(pixelFormat, iteration%255, iteration % 255, iteration % 255);
 						//colourPixel = SDL_MapRGB(pixelFormat, (iteration+(int)thisX*10)%255, iteration%255, (iteration + (int)thisX * (int)thisY) %255);
 						//colourPixel = SDL_MapRGB(pixelFormat, iteration*thisX, 255%(iteration*iteration), thisY);
 						//colourPixel = SDL_MapRGB(pixelFormat, iteration, iteration*iteration, lastY);
+			
 						break;
 					}
 
