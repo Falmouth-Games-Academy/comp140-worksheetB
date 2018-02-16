@@ -8,8 +8,12 @@ int main(int, char**)
 {
 	int windowWidth = 800;
 	int windowHeight = 800;
+
+
 	//Initialise the Video Part of SDL2
-	if (SDL_Init(SDL_INIT_VIDEO) != 0) {
+	if (SDL_Init(SDL_INIT_VIDEO) != 0) 
+	
+	{
 		//Print out an error message to the screen if this fails
 		std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
 		return 1;
@@ -17,7 +21,8 @@ int main(int, char**)
 
 	//Creare a 800x800 window with the title Fractal
 	SDL_Window *window = SDL_CreateWindow("Fractal", 100, 100, windowWidth, windowHeight, SDL_WINDOW_SHOWN);
-	if (window == nullptr) {
+	if (window == nullptr) 
+	{
 		//Print out error if this fails
 		std::cout << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
 		SDL_Quit();
@@ -26,13 +31,15 @@ int main(int, char**)
 
 	//Create a renderer
 	SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-	if (renderer == nullptr) {
+	if (renderer == nullptr) 
+	{
 		//Print error and cleanup
 		SDL_DestroyWindow(window);
 		std::cout << "SDL_CreateRenderer Error: " << SDL_GetError() << std::endl;
 		SDL_Quit();
 		return 1;
 	}
+
 	//this stores the pixels retrieved from the texture
 	Uint32 * pixels = NULL;
 	//the pitch is the width of the texture in bytes
@@ -46,6 +53,7 @@ int main(int, char**)
 	// Minimum and maximum coordinates for the fractal
 	const double minX = -2, maxX = 1, minY = -1.5, maxY = 1.5;
 
+
 	//Controls the game loop
 	bool quit = false;
 	//Holds events coming from SDL
@@ -54,9 +62,11 @@ int main(int, char**)
 	while (!quit)
 	{
 		//Check for Messages from SDL
-		while (SDL_PollEvent(&event)) {
+		while (SDL_PollEvent(&event)) 
+		{
 			//quit is generated when red cross is clicked
-			if (event.type == SDL_QUIT) {
+			if (event.type == SDL_QUIT) 
+			{
 				quit = true;
 			}
 		}
@@ -68,35 +78,73 @@ int main(int, char**)
 		//do drawing here
 		SDL_LockTexture(fractalTexture, NULL, (void**)&pixels, &pitch);
 
+		//X and Y values
+		double currentX;
+		double currentY;
+		double nextX;
+		double nextY;
+
+		//Number of iterations of fractal algorithm
+		const int iterations = 50;
+
+		//Define colours
+		int r = 255;
+		int g = 0;
+		int b = 0;
+
+		Uint32 black = SDL_MapRGB(pixelFormat, 0, 0, 0);
 
 
-		for (int pixelY = 0; pixelY < windowHeight; pixelY++) {
-			// TODO: Map the y coordinate into the range minY to maxY
-			//double y0 =
-			for (int pixelX = 0; pixelX < windowWidth; pixelX++){
+		//Iterate over all the pixels on the screen
+		for (int pixelY = 0; pixelY < windowHeight; pixelY++) 
+		{
+			// Map the y coordinate into the range minY to maxY
+			double y0 = (pixelY / (double)windowWidth) * (maxY - minY) + minY;
 
-				// TODO: Map the x coordinate into the range minX to maxX
-				//double x0 =
+			for (int pixelX = 0; pixelX < windowWidth; pixelX++)
+			{
+				// Map the x coordinate into the range minX to maxX
+				double x0 = (pixelX / (double)windowWidth) * (maxX - minX) + minX;
 
 				unsigned int pixelPosition = pixelY * (pitch / pixelFormat->BytesPerPixel) + pixelX;
 
-				// TODO: implement the algorithm to colour a single pixel (x0, y0) of the fractal
-				// The code below simply fills the screen with random pixels
+				//Initialise X and Y as x0, y0
+				currentX = x0;
+				currentY = y0;
 
-				// Write the pixel
-				// TODO: change this for desired pixel colour value
-				Uint32 colour = SDL_MapRGB(pixelFormat, rand()%255, rand() % 255, rand() % 255);
-				// Now we can set the pixel(s) we want.
-				pixels[pixelPosition] = colour;
+				//Iterate x0 .. x199 and check if it satisfies equation
+				for (int i = 0; i < iterations; i++)
+				{					
+					//Check algorithm with x and y values
+					if (pow(currentX, 2) + pow(currentY, 2) >= 4)
+					{
+						//Calculate colour based on iterations
+						r = (i * 255 / iterations);
+						Uint32 colour = SDL_MapRGB(pixelFormat, r, g, b);
+
+						pixels[pixelPosition] = colour;
+						break;
+					}
+
+					else
+					{
+						pixels[pixelPosition] = black;
+					}
+
+					//Calculate new X and Y	
+					nextX = pow(currentX, 2) - pow(currentY, 2) + x0;
+					nextY = (2 * currentX * currentY) + y0;	
+					
+					currentX = nextX;
+					currentY = nextY;
+				}							
 			}
 		}
 
-		SDL_UnlockTexture(fractalTexture);
-		
+		SDL_UnlockTexture(fractalTexture);		
 		SDL_RenderCopy(renderer, fractalTexture, NULL, NULL);
+
 		//Display the work the renderer has been doing, this make something appear on the screen
-
-
 		SDL_RenderPresent(renderer);
 	}
 
