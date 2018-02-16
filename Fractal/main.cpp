@@ -3,6 +3,7 @@
 // http://www.willusher.io/pages/sdl2/
 
 #include "stdafx.h"
+#include <cmath>
 
 int main(int, char**) 
 {
@@ -78,7 +79,7 @@ int main(int, char**)
 			for (int pixelX = 0; pixelX < windowWidth; pixelX++)
 			{
 				/* The colour to set all pixels initially */
-				Uint32 colourPixel = SDL_MapRGB(pixelFormat, 200, 200, 0);
+				Uint32 colourPixel = SDL_MapRGB(pixelFormat, 0, 0, 0);
 
 				// Map the x coordinate into the range minX to maxX
 				double x0 = (pixelX / (double)windowWidth) * (maxX - minX) + minX;
@@ -101,8 +102,12 @@ int main(int, char**)
 				{
 					/* Uses x and y values calculated in previous iteration (or 0 if just started)
 					to calculate values needed for this iteration */
-					double thisX = ((lastX * lastX) - (lastY * lastY)) + x0;
-					double thisY = (2 * lastX * lastY) + y0;
+					//double thisX = ((lastX * lastX) - (lastY * lastY)) + x0;
+					//double thisY = (2 * lastX * lastY) + y0;
+
+					// Julia set computation
+					double thisX = pow((lastX * lastX) + (lastY * lastY), (i / 2)) * cos(i * atan2(lastY, lastX)) + x0;
+					double thisY = pow((lastX * lastX) + (lastY * lastY), (i / 2)) * sin(i * atan2(lastY, lastX)) + y0;
 					
 					// Inrease iteration number
 					i++;
