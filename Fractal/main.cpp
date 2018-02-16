@@ -94,9 +94,11 @@ int main(int, char**)
 					double nextY = (2 * currentX * currentY) + y0;
 					if ((nextX * nextX) + (nextY * nextY) >= 4)
 					{
+						// Sets outside lines' colour
 						colour = SDL_MapRGB(pixelFormat, i * 255 / 50, i * 255 / 50, i * 255 / 50);
 						break;
 					}
+					// Converts currentX and currentY to nextX and nextY so that we can get next value of x(i+1) and y(i+1)
 					currentX = nextX;
 					currentY = nextY;
 				}
