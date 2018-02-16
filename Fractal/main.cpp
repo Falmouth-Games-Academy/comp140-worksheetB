@@ -4,6 +4,24 @@
 
 #include "stdafx.h"
 
+
+Uint32 genFractal(double x, double y)
+{
+	double NewX = x;
+	double NewY = y;
+	for (int counter = 0; counter < 255; counter++)
+	{
+		if (NewX*NewX + NewY*NewY >= 4)
+		{
+			return SDL_MapRGB(SDL_AllocFormat(SDL_PIXELFORMAT_RGB888), 255-counter, 100-counter, 60-counter);
+		}
+		double tempSave = NewY;
+		NewY = (2 * NewX * NewY) + y;
+		NewX = (NewX*NewX) - (tempSave*tempSave) + x;
+	}
+	return SDL_MapRGB(SDL_AllocFormat(SDL_PIXELFORMAT_RGB888), 255, 255, 255);
+}
+
 int main(int, char**) 
 {
 	int windowWidth = 800;
@@ -70,22 +88,19 @@ int main(int, char**)
 
 
 
-		for (int pixelY = 0; pixelY < windowHeight; pixelY++) {
-			// TODO: Map the y coordinate into the range minY to maxY
-			//double y0 =
-			for (int pixelX = 0; pixelX < windowWidth; pixelX++){
-
-				// TODO: Map the x coordinate into the range minX to maxX
-				//double x0 =
-
+		for (double pixelY = 0; pixelY < windowHeight; pixelY++) {
+			double y = (pixelY / windowWidth) * (maxY - minY) + minY;
+			for (double pixelX = 0; pixelX < windowWidth; pixelX++){
+				double x = (pixelX / windowWidth) * (maxX - minX) + minX;
 				unsigned int pixelPosition = pixelY * (pitch / pixelFormat->BytesPerPixel) + pixelX;
 
 				// TODO: implement the algorithm to colour a single pixel (x0, y0) of the fractal
+
 				// The code below simply fills the screen with random pixels
 
 				// Write the pixel
 				// TODO: change this for desired pixel colour value
-				Uint32 colour = SDL_MapRGB(pixelFormat, rand()%255, rand() % 255, rand() % 255);
+				Uint32 colour = genFractal(x, y);
 				// Now we can set the pixel(s) we want.
 				pixels[pixelPosition] = colour;
 			}
