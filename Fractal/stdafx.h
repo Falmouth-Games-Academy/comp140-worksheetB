@@ -14,3 +14,9 @@
 
 #include <SDL.h>
 #include <SDL_image.h>
+
+double CalculateMandelbrotY(double lastX, double lastY, double yCoordinate);
+double CalculateMandelbrotX(double lastX, double lastY, double xCoordinate);
+
+double CalculateJuliaX(double lastX, double lastY, double xCoordinate, int i);
+double CalculateJuliaY(double lastX, double lastY, double yCoordinate, int i);
