@@ -6,18 +6,18 @@ You play as a hand puppet with a laser-beam spewing mouth in a 2D side-scrolling
 
 The gameplay will revolve around destroying evil mutant 'animals' (shadow puppets) with your laser, but there may be some RPG elements. For example, you may be sent on a mission by the Monday sock to find his missing partner. In fact, socks might be a regular collectible. Getting a pair will unleash new powers.  
 
-If it's possible, the Transformation ability will add some diversity to the game. By changing your hand from a puppet stance into a gun stance, you can transform into the murderous Shorthand, firing bullets by pulling your middle finger. Changing your hand to a fist will introduces the super-strong Fistfist, who can punch enemies and objects into oblivion, but is vulnerable on its back end.  
+If it's possible, a Transformation ability will add some diversity to the gameplay. By changing your hand from a puppet stance into a gun stance, you can transform into the murderous Shorthand, firing bullets by pulling your middle finger. Changing your hand to a fist will introduces the super-strong Fistfist, who can punch enemies and objects into oblivion, but is vulnerable on its back end.  
 
-The character art style will be photos of hands, while the background art style will be a low-quality impression of a puppet show backdrop, with paper assets on sticks bouncing around.  
+The character art style will be photos of hands, while the background art style will be a low-quality impression of a puppet show backdrop, with paper assets on sticks bouncing around. Alternatively, the background art may be parallax-layered photos of the campus. The camera will zoom in and out where appropriate, giving a feeling of scale. You're a small hand in a big, big world.  
 
 ### Controller overview
 *Note that many elements of the controller, including every aspect of the form factor, are likely to change and adapt as the concept progresses.*  
 
-The controller will require a flex sensor, accelerometer and possibly an altimeter. In its base 'naked' form, the sensors will be placed on a part of the hand most appropriate; for example, the flex sensor taped inside the hand on the middle finger. As the player's hand will spend most of its time upright, the main board will be stuck to the top of the hand using either a strap or adhesive.  
+The controller will require a flex sensor, accelerometer, vibrating motor, and possibly a compass. In its base 'naked' form, the sensors will be placed on a part of the hand most appropriate; for example, the flex sensor inside the hand on the middle finger. The sensors may be fixed to finger and thumb rings and wired up to the Arduino board with wires about an arm's length long. A weak elastic band may be wrapped around to hold the bend sensors at a sensible angle, and for the vibrating motor.    
 
-The flex sensor will be used for your laser beam. The accelerometer and possibly altimeter will be used to detect whether you're bouncing your hand. The accelerometer should also be responsible for detecting when you've turned your hand around.  
+The flex sensor will be used for your laser beam. The accelerometer will be used to detect tilt and whether you're bouncing your hand. The compass, if applicable, will detect which direction the hand is facing so the player can turn around with a humourous expression.  
 
-The final version might have a hand-made puppet to go with it, but I prefer the idea of playing the game as your own hand.
+The final version might have a hand-made puppet to go with it, especially if that's necessary for the components to stick securely in place, but I prefer the novelty of playing the game as your own hand and will try to aim for that.  
 
 # Extra to the Page (no need to read this)
 We were asked to write a page for the proposals, and indeed, all of the text below is part of the page. I have cut it out so that this page does not exceed a page, however, either way it is unlikely to exceed a page as it is, indeed, a page. Further to this though, one could observe that this page does not fit within one monitor screen. This is true, however it could be strongly argued that a monitor is not a page. To exceed a page would require that more than one page be stuck to the screen, perhaps with some sticky tape.  
