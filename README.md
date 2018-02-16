@@ -16,14 +16,8 @@ Hitting a correct target will give one point, and light up a red LED.
 ### game mechanics
 3 potentiometer: 1 zoom in out, 2 is x axis and 3 is y axis and a button to fire. there will be wind which will affect the bullet trajectory. 
 
+### Research on alt-controllers
 
-
-(a) Submission is timely;
-(b) Research activities are exhaustive and well referenced
-(c) Description of the controller
-(d) Design is distinctive and has creative merit
-
-Research on alt-controllers
 I've looked at 3 different alternative controllers and the games associated with them. 
 The first game was BiDul, where on the side of the controller there are two hand crank mechanisms which allowed the creature to move.
 You are able to use a joystick to turn it and a button on top to use a jet pack.
@@ -36,7 +30,7 @@ The controller was a long box with two buttons on either end and the players use
 The third game I found was called "hello operator", where the controller is a Victorian telephony system. 
 Where players answer a phone and work out  which port to plug into so that the call can be transfered to the correct person
 
-My Alt-Controller
+### My Alt-Controller
 
 My controller will be a wooden rifle with a scope on it. There will be a potentiometer on the scope to adjust the zoom level. 
 Behind the barrel will be a Gyroscope, so that the game can accurately tell what the gun is aiming at. There will be a trigger, 
