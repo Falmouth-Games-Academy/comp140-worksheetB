@@ -3,8 +3,9 @@
 // http://www.willusher.io/pages/sdl2/
 
 #include "stdafx.h"
+#include <complex>
 
-int main(int, char**) 
+int main(int, char**)
 {
 	int windowWidth = 800;
 	int windowHeight = 800;
@@ -42,7 +43,6 @@ int main(int, char**)
 	//Get the pixel format the texture
 	SDL_PixelFormat * pixelFormat = SDL_AllocFormat(SDL_PIXELFORMAT_RGB888);
 
-
 	// Minimum and maximum coordinates for the fractal
 	const double minX = -2, maxX = 1, minY = -1.5, maxY = 1.5;
 
@@ -64,38 +64,50 @@ int main(int, char**)
 		//Clear the renderer
 		SDL_RenderClear(renderer);
 
-		
 		//do drawing here
 		SDL_LockTexture(fractalTexture, NULL, (void**)&pixels, &pitch);
-
-
-
+		
 		for (int pixelY = 0; pixelY < windowHeight; pixelY++) {
-			// TODO: Map the y coordinate into the range minY to maxY
-			//double y0 =
-			for (int pixelX = 0; pixelX < windowWidth; pixelX++){
+			double y0 = (pixelY / (double)windowHeight) * (maxY - minY) + minY;
 
-				// TODO: Map the x coordinate into the range minX to maxX
-				//double x0 =
+			for (int pixelX = 0; pixelX < windowWidth; pixelX++) {
+				double x0 = (pixelX / (double)windowWidth) * (maxX - minX) + minX;
 
 				unsigned int pixelPosition = pixelY * (pitch / pixelFormat->BytesPerPixel) + pixelX;
 
-				// TODO: implement the algorithm to colour a single pixel (x0, y0) of the fractal
-				// The code below simply fills the screen with random pixels
+				//the current iteration cycle
+				int iteration = 0;
 
-				// Write the pixel
-				// TODO: change this for desired pixel colour value
-				Uint32 colour = SDL_MapRGB(pixelFormat, rand()%255, rand() % 255, rand() % 255);
-				// Now we can set the pixel(s) we want.
-				pixels[pixelPosition] = colour;
+				//the max amount of iterations
+				int maxIterations = 50;
+
+				double lastX = 0;
+				double lastY = 0;
+
+				while (iteration < maxIterations)
+				{
+					double tempY = (2 * lastX * lastY) + y0;
+					double tempX = ((lastX * lastX) - (lastY * lastY)) + x0;
+
+					iteration++;
+
+					if ((tempX * tempX) + (tempY * tempY) >= 4)
+					{
+						Uint32 colour = SDL_MapRGB(pixelFormat, iteration * 255 / maxIterations, 0, 0);
+						pixels[pixelPosition] = colour;
+						break;
+					}
+
+					lastX = tempX;
+					lastY = tempY;
+				}
 			}
 		}
 
 		SDL_UnlockTexture(fractalTexture);
-		
+
 		SDL_RenderCopy(renderer, fractalTexture, NULL, NULL);
 		//Display the work the renderer has been doing, this make something appear on the screen
-
 
 		SDL_RenderPresent(renderer);
 	}
