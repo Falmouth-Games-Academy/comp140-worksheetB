@@ -4,8 +4,14 @@
 
 #include "stdafx.h"
 
+enum class FractalType {
+	Mandelbrot = 0,
+	Julia = 1,
+};
+
 int main(int, char**) 
 {
+	FractalType fractalType = FractalType::Mandelbrot;
 	int windowWidth = 800;
 	int windowHeight = 800;
 	//Initialise the Video Part of SDL2
@@ -59,6 +65,13 @@ int main(int, char**)
 			if (event.type == SDL_QUIT) {
 				quit = true;
 			}
+
+			// change fractal type with spacebar
+			if (event.type == SDL_KEYDOWN) {
+				if (event.key.keysym.sym == SDLK_SPACE) {
+					fractalType = (fractalType == FractalType::Mandelbrot ? FractalType::Julia : FractalType::Mandelbrot);
+				}
+			}
 		}
 
 		//Clear the renderer
@@ -68,39 +81,59 @@ int main(int, char**)
 		//do drawing here
 		SDL_LockTexture(fractalTexture, NULL, (void**)&pixels, &pitch);
 
-		double minX = -2.0, maxX = 1.0;
-		double minY = -1.5, maxY = 1.5;
+		/*const double minX = -2.5, maxX = 1.0;
+		const double minY = -1.0, maxY = 1.0;*/
+		const double minX = -2.0, maxX = 1.0;
+		const double minY = -1.5, maxY = 1.5;
+		const double juliaCX = 0.25, juliaCY = 0.5;
 
 		for (int pixelY = 0; pixelY < windowHeight; pixelY++) {
-			// TODO: Map the y coordinate into the range minY to maxY
+			// Map the y coordinate between minY and maxY
 			double physicalY = minY + ((double)pixelY / (double)windowHeight * (maxY - minY));
 
 			for (int pixelX = 0; pixelX < windowWidth; pixelX++){
-				// TODO: Map the x coordinate into the range minX to maxX
+				// Map the x coordinate between minX and maxX
 				double physicalX = minX + ((double)pixelX / (double)windowWidth * (maxX - minX));
 
 				unsigned int pixelPosition = pixelY * (pitch / pixelFormat->BytesPerPixel) + pixelX;
-
-				// TODO: implement the algorithm to colour a single pixel (x0, y0) of the fractal
-				// The code below simply fills the screen with random pixels
-				int iteration;
 				Uint32 pixelColour = SDL_MapRGB(pixelFormat, 0, 0, 0);
-				double lastXVal = physicalX * physicalX - physicalY * physicalY + physicalX;
-				double lastYVal = 2.0 * physicalX * physicalY + physicalY;
-				for (iteration = 1; iteration < 200; ++iteration) {
-					double nextXVal = lastXVal * lastXVal - lastYVal * lastYVal + physicalX;
-					double nextYVal = 2.0 * lastXVal * lastYVal + physicalY;
 
-					if (nextXVal * nextXVal + nextYVal * nextYVal >= 4.0) {
-						pixelColour = SDL_MapRGB(pixelFormat, iteration * 255 / 200, iteration * 255 / 200, iteration * 255 / 200);
-						break;
+				if (fractalType == FractalType::Mandelbrot) {
+					int iteration;
+					double lastXVal = physicalX;
+					double lastYVal = physicalY;
+					const int maxIterations = 200;
+
+					for (iteration = 0; iteration < maxIterations; ++iteration) {
+						double nextXVal = lastXVal * lastXVal - lastYVal * lastYVal + physicalX;
+						double nextYVal = 2.0 * lastXVal * lastYVal + physicalY;
+
+						if (nextXVal * nextXVal + nextYVal * nextYVal >= 4.0) {
+							pixelColour = SDL_MapRGB(pixelFormat, iteration * 255 / maxIterations, iteration * 255 / maxIterations, iteration * 255 / maxIterations);
+							break;
+						}
+
+						lastXVal = nextXVal;
+						lastYVal = nextYVal;
 					}
+				} else /* FractalType::Julia */ {
+					int iteration;
+					double lastXVal = physicalX, lastYVal = physicalY;
+					const int maxIterations = 20;
 
-					lastXVal = nextXVal;
-					lastYVal = nextYVal;
+					for (iteration = 0; iteration < maxIterations; ++iteration) {
+						double nextXVal = lastXVal * lastXVal - lastYVal * lastYVal + juliaCX;
+						double nextYVal = 2.0 * lastXVal * lastYVal + juliaCY;
+
+						if (nextXVal * nextXVal + nextYVal * nextYVal >= 4.0) {
+							pixelColour = SDL_MapRGB(pixelFormat, iteration * 255 / maxIterations, iteration * 255 / maxIterations, iteration * 255 / maxIterations);
+							break;
+						}
+
+						lastXVal = nextXVal;
+						lastYVal = nextYVal;
+					}
 				}
-
-
 
 				// Write the pixel
 				// Now we can set the pixel(s) we want.
