@@ -80,7 +80,7 @@ int main(int, char**)
 			// TODO: Map the y coordinate into the range minY to maxY
 			double y0 = pixelY / windowHeight * (maxY - minY) + minY;
 			for (int pixelX = 1; pixelX < windowWidth; pixelX++){
-
+				
 				// TODO: Map the x coordinate into the range minX to maxX
 				double x0 = pixelX / windowWidth * (maxX - minX) + minX;
 
@@ -97,19 +97,16 @@ int main(int, char**)
 				// Set colour based on i
 				if ((xi) * 2 + (yi) * 2 >= 4)
 				{
-					iterations = 0;
+					//iterations = 0;
 					colour = SDL_MapRGB(pixelFormat, xi % 255, xi % 255, yi % 255);
 				}
 				else
 				{
-					iterations++;
+					
 					if (iterations >= 200)
 					{
 						colour = SDL_MapRGB(pixelFormat, 0, 0, 0);
-					}
-					else
-					{
-						colour = SDL_MapRGB(pixelFormat, yi % 255, yi % 255, yi % 255);
+						iterations = 0;
 					}
 				}
 
@@ -118,6 +115,7 @@ int main(int, char**)
 				//Uint32 colour = SDL_MapRGB(pixelFormat, rand()%255, rand() % 255, rand() % 255);
 				// Now we can set the pixel(s) we want.
 				pixels[pixelPosition] = colour;
+				iterations++;
 			}
 		}
 
