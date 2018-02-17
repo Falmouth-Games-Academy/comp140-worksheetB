@@ -3,7 +3,7 @@
 // http://www.willusher.io/pages/sdl2/
 
 #include "stdafx.h"
-
+# NEED HELP !!
 int main(int, char**) 
 {
 	int windowWidth = 800;
