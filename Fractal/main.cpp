@@ -3,6 +3,25 @@
 // http://www.willusher.io/pages/sdl2/
 
 #include "stdafx.h"
+const unsigned int noI = 200;
+Uint32 methodFractalCreate(double x, double y)
+{
+	// initiate new x and y to work with
+	double neoX = x; 
+	double neoY = y;
+	// for 200 itterations 
+	for (int i = 0; i < noI; i++)
+	{
+		if (neoX*neoX + neoY * neoY >= 4)
+		{
+			return SDL_MapRGB(SDL_AllocFormat(SDL_PIXELFORMAT_RGB332), 255, 255 - i, 255);
+		}
+		double dblStore = neoX;
+		neoX = neoX * neoX - neoY * neoY + x;
+		neoY = 2 * dblStore * neoY + y;
+	}
+	return SDL_MapRGB(SDL_AllocFormat(SDL_PIXELFORMAT_RGB888), 0, 0, 0);
+}
 
 int main(int, char**) 
 {
@@ -70,12 +89,13 @@ int main(int, char**)
 
 
 
-		for (int pixelY = 0; pixelY < windowHeight; pixelY++) {
+		for (double pixelY = 0; pixelY < windowHeight; pixelY++) {
 			// TODO: Map the y coordinate into the range minY to maxY
+			double y = pixelY / windowHeight * (maxY - minY) + minY;
 			//double y0 =
-			for (int pixelX = 0; pixelX < windowWidth; pixelX++){
-
+			for (double pixelX = 0; pixelX < windowWidth; pixelX++){
 				// TODO: Map the x coordinate into the range minX to maxX
+				double x = pixelX / windowHeight * (maxY - minY) + minY;
 				//double x0 =
 
 				unsigned int pixelPosition = pixelY * (pitch / pixelFormat->BytesPerPixel) + pixelX;
@@ -85,7 +105,7 @@ int main(int, char**)
 
 				// Write the pixel
 				// TODO: change this for desired pixel colour value
-				Uint32 colour = SDL_MapRGB(pixelFormat, rand()%255, rand() % 255, rand() % 255);
+				Uint32 colour = methodFractalCreate(x, y);
 				// Now we can set the pixel(s) we want.
 				pixels[pixelPosition] = colour;
 			}
