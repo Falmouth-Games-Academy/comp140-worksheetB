@@ -11,3 +11,11 @@ One potentiometer will control the x axis of the character whilst the other will
 
 ## Controller
 The controller will consist of two potentiometers for controlling the x and y axis of the character and a button to quickly reset and start the game. A green LED will turn on if you have surpassed your previous high score.
+
+
+
+
+
+
+## Other
+Labyrinth
