@@ -9,20 +9,24 @@ As a stretch goal, a Transformation ability will add some diversity to the gamep
 
 The character art style will be photos of hands, while the background art style will be photos of various areas on the campus backdrop, with paper assets on sticks bouncing around. Alternatively, the background art may be parallax-layered photos of the campus. The camera will zoom in and out where appropriate, giving a feeling of scale. You're a small hand in a big, big world, and you must journey far and wide in order to achieve your goal of making the game.  
 
+The target audience is the people at this university--most likely the more zany and creative of them. Despite this being an adult demographic, there is minimal gory violence and a lot of silliness and explosions. My rationale is that there is little time to make this project, meaning an ambitious one will be less likely to be completed to the quality desired by the players. Instead, a project centred on a fun novelty, meanwhile, can lower the player's expectations of quality whilst being highly enjoyable regardless. It'll also be much more finished--so it should feel more like a complete experience to anyone playing it in a showroom.
+
 ### Controller overview
 The controller will require the following components:  
 
 **Flex sensor:**: To detect whether your mouth is open, or your trigger finger is being pulled. This must be connected between the player's thumb and middle finger somehow.  
-**Accelerometer:**: To detect whether you're bouncing up and down to move along, as well as the angle you're aiming at. Depending on the orientation of the sensor,  it _may_ be possible to use this to detect whether you're turning around, by testing centrifugal force. This would be challenging though, and from a programming and accuracy standpoint a compass would be preferable.
+**Accelerometer:**: To detect whether you're bouncing up and down to move along, as well as the angle you're aiming at. Depending on the orientation of the sensor,  it _may_ be possible to use this to detect whether you're turning around, by testing centrifugal force. This would be challenging though, and from a programming and accuracy standpoint a compass would be preferable. This should be on top of the hand away from the fingers, so it can be minimally affected by the player's laser usage.  
 **Compass (optional):**: To detect which way your hand is pointing and therefore the direction of the player character.  
-**Vibrating motor:**
+**Vibrating motor:**: To produce force feedback whilst shooting your laser. This'll be most effective within the palm of the hand should there be a way to stick it.
 
-Based on the prerequisites above, the controller would work best as either a glove or a more bareboned set of components that can very easily be attached to the hand. For the latter, which would most likely feel more immersive for the player (as opposed to wearing a hand puppet of a hand), perhaps the ideal way to make attach them would be to fix a finger and thumb ring around the bend sensor, while fixing the compass and accelerometer to a wide rubber band which will go around the hand.
+Based on the prerequisites above, the controller would work best as either a glove or a more bareboned set of components that can very easily be attached to the hand. For the latter, which would most likely feel more immersive for the player (as opposed to wearing a hand puppet of a hand), perhaps the ideal way to make attach them would be to fix a finger and thumb ring around the bend sensor, while fixing the compass and accelerometer to a wide rubber band which will go around the hand.  
 
-Alternatively, it may be novel to make a hand puppet that is, indeed, just a rubber hand. 
+The physique of the player's hand needs to be accounted for. Elastic components could be used as often as possible to support differing hand sizes. However, this may be uncomfortable in places where it could cut the blood flow in fingers. Should this prove to have a significant impact, I may provide rings of varying sizes along with a clip to stick the sensor to them.  
+
+It may be novel to make a hand puppet that is, indeed, just a rubber hand. This may be a stretch goal in the future, but finding ideal ways to fix the components to a 'naked' hand takes priority.  
 
 # Extra to the Page (no need to read this)
-We were asked to write a page for the proposals, and indeed, all of the text below is part of the page. I have cut it out so that this page does not exceed a page, however, either way it is unlikely to exceed a page as it is, indeed, a page. Further to this though, one could observe that this page does not fit within one monitor screen. This is true, however it could be strongly argued that a monitor is not a page. To exceed a page would require that more than one page be stuck to the screen, perhaps with some sticky tape.  
+We were asked to write a page for the proposals, and to my credit, all of the text below is part of the page. I have cut it out so that this page does not exceed a page, however, either way it is unlikely to exceed a page as it is, indeed, a page. Further to this though, one could observe that this page does not fit within one monitor screen. This is true, however it could be strongly argued that a monitor is not a page. To exceed a page would require that more than one page be stuck to the screen, perhaps with some sticky tape.  
 
 ### Quirks
 * When you defeat enemies, they crumble into pieces.  
