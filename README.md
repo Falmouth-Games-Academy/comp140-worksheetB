@@ -1,14 +1,13 @@
 # The Page
 ## Proposal: Hand Puppet The Game
 ### Concept
-*Note that scope is not addressed in this concept*  
-You play as a hand puppet with a laser-beam spewing mouth in a 2D side-scrolling platform game. You bounce up and down to move along, and use a crouch-jump motion to jump. To use your laser beam, open your mouth wide. The laser beam will make a satisfying BLAAAAAARGH and the controller will vibrate.  
+You play as a hand with a laser-beam spewing mouth in a 2D side-scrolling platform game taking place on campus. Using a bareboned motion controller of straps and rings--with your hand shaped like a talking mouth--you bounce up and down to move along, and use a crouch-jump motion to jump. To use your laser beam, open your mouth wide. The laser beam will make a satisfying BLAAAAAARGH with a vibration feedback effect, and an additional effect of vaporising any enemy foolish enough to stand in your way.  
 
-The gameplay will revolve around destroying evil mutant 'animals' (shadow puppets) with your laser, but there may be some RPG elements. For example, you may be sent on a mission by the Monday sock to find his missing partner. In fact, socks might be a regular collectible. Getting a pair will unleash new powers.  
+The storyline is brief but simple: the assignment is due tomorrow and the game hasn't been made yet. Your goal is to get to the studio on time to make the game before it's too late. The gameplay revolves around destroying evil mutant 'animals' (shadow puppets) with your laser, but there may be some RPG elements. For example, you may be sent on a mission by the Monday sock to find his missing partner. In fact, socks might be a regular collectible. Getting a pair will unleash new powers.  
 
-If it's possible, a Transformation ability will add some diversity to the gameplay. By changing your hand from a puppet stance into a gun stance, you can transform into the murderous Shorthand, firing bullets by pulling your middle finger. Changing your hand to a fist will introduces the super-strong Fistfist, who can punch enemies and objects into oblivion, but is vulnerable on its back end.  
+As a stretch goal, a Transformation ability will add some diversity to the gameplay. By changing your hand from a puppet stance into a gun stance, you can transform into the murderous Shorthand, firing bullets by pulling your middle finger. Changing your hand to a fist will introduces the super-strong Fistfist, who can punch enemies and objects into oblivion, but is vulnerable on its back end.  
 
-The character art style will be photos of hands, while the background art style will be a low-quality impression of a puppet show backdrop, with paper assets on sticks bouncing around. Alternatively, the background art may be parallax-layered photos of the campus. The camera will zoom in and out where appropriate, giving a feeling of scale. You're a small hand in a big, big world.  
+The character art style will be photos of hands, while the background art style will be photos of various areas on the campus backdrop, with paper assets on sticks bouncing around. Alternatively, the background art may be parallax-layered photos of the campus. The camera will zoom in and out where appropriate, giving a feeling of scale. You're a small hand in a big, big world, and you must journey far and wide in order to achieve your goal of making the game.  
 
 ### Controller overview
 *Note that many elements of the controller, including every aspect of the form factor, are likely to change and adapt as the concept progresses.*  
