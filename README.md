@@ -10,13 +10,16 @@ As a stretch goal, a Transformation ability will add some diversity to the gamep
 The character art style will be photos of hands, while the background art style will be photos of various areas on the campus backdrop, with paper assets on sticks bouncing around. Alternatively, the background art may be parallax-layered photos of the campus. The camera will zoom in and out where appropriate, giving a feeling of scale. You're a small hand in a big, big world, and you must journey far and wide in order to achieve your goal of making the game.  
 
 ### Controller overview
-*Note that many elements of the controller, including every aspect of the form factor, are likely to change and adapt as the concept progresses.*  
+The controller will require the following components:  
 
-The controller will require a flex sensor, accelerometer, vibrating motor, and possibly a compass. In its base 'naked' form, the sensors will be placed on a part of the hand most appropriate; for example, the flex sensor inside the hand on the middle finger. The sensors may be fixed to finger and thumb rings and wired up to the Arduino board with wires about an arm's length long. A weak elastic band may be wrapped around to hold the bend sensors at a sensible angle, and for the vibrating motor.    
+**Flex sensor:**: To detect whether your mouth is open, or your trigger finger is being pulled. This must be connected between the player's thumb and middle finger somehow.  
+**Accelerometer:**: To detect whether you're bouncing up and down to move along, as well as the angle you're aiming at. Depending on the orientation of the sensor,  it _may_ be possible to use this to detect whether you're turning around, by testing centrifugal force. This would be challenging though, and from a programming and accuracy standpoint a compass would be preferable.
+**Compass (optional):**: To detect which way your hand is pointing and therefore the direction of the player character.  
+**Vibrating motor:**
 
-The flex sensor will be used for your laser beam. The accelerometer will be used to detect tilt and whether you're bouncing your hand. The compass, if applicable, will detect which direction the hand is facing so the player can turn around with a humourous expression.  
+Based on the prerequisites above, the controller would work best as either a glove or a more bareboned set of components that can very easily be attached to the hand. For the latter, which would most likely feel more immersive for the player (as opposed to wearing a hand puppet of a hand), perhaps the ideal way to make attach them would be to fix a finger and thumb ring around the bend sensor, while fixing the compass and accelerometer to a wide rubber band which will go around the hand.
 
-The final version might have a hand-made puppet to go with it, especially if that's necessary for the components to stick securely in place, but I prefer the novelty of playing the game as your own hand and will try to aim for that.  
+Alternatively, it may be novel to make a hand puppet that is, indeed, just a rubber hand. 
 
 # Extra to the Page (no need to read this)
 We were asked to write a page for the proposals, and indeed, all of the text below is part of the page. I have cut it out so that this page does not exceed a page, however, either way it is unlikely to exceed a page as it is, indeed, a page. Further to this though, one could observe that this page does not fit within one monitor screen. This is true, however it could be strongly argued that a monitor is not a page. To exceed a page would require that more than one page be stuck to the screen, perhaps with some sticky tape.  
