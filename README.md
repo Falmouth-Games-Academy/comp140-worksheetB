@@ -1,4 +1,7 @@
-# The Page
+# The Fractal
+Press Space to switch between the Mendelbrot and Julia set.
+GitHub Link: https://github.com/LXShades/comp140-worksheetB  
+
 ## Initial controller research
 https://drive.google.com/open?id=1ag7VWp-_6ByFekKHsxQe3_BH2VBje6Dt6ullD5DRf4g  
 

@@ -95,9 +95,11 @@ int main(int, char**)
 				// Map the x coordinate between minX and maxX
 				double physicalX = minX + ((double)pixelX / (double)windowWidth * (maxX - minX));
 
+				// Determine pixel precision and prepare colour
 				unsigned int pixelPosition = pixelY * (pitch / pixelFormat->BytesPerPixel) + pixelX;
 				Uint32 pixelColour = SDL_MapRGB(pixelFormat, 0, 0, 0);
 
+				// Decide pixel based on current fractal formula
 				if (fractalType == FractalType::Mandelbrot) {
 					int iteration;
 					double lastXVal = physicalX;
