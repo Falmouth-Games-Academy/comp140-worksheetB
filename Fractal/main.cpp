@@ -11,6 +11,8 @@ enum class FractalType {
 
 int main(int, char**) 
 {
+	printf("Starting up\nPress Space to toggle Mendelbrot and Julia fractals\n");
+
 	FractalType fractalType = FractalType::Mandelbrot;
 	int windowWidth = 800;
 	int windowHeight = 800;
@@ -81,11 +83,14 @@ int main(int, char**)
 		//do drawing here
 		SDL_LockTexture(fractalTexture, NULL, (void**)&pixels, &pitch);
 
+		// Do funky stuff
+		float movementAngle = (SDL_GetTicks() % 3000) * 6.28 / 3000.0;
+
 		/*const double minX = -2.5, maxX = 1.0;
 		const double minY = -1.0, maxY = 1.0;*/
 		const double minX = -2.0, maxX = 1.0;
 		const double minY = -1.5, maxY = 1.5;
-		const double juliaCX = 0.25, juliaCY = 0.5;
+		const double juliaCX = 0.25 + sin(movementAngle), juliaCY = 0.5 - cos(movementAngle);
 
 		for (int pixelY = 0; pixelY < windowHeight; pixelY++) {
 			// Map the y coordinate between minY and maxY
@@ -104,7 +109,7 @@ int main(int, char**)
 					int iteration;
 					double lastXVal = physicalX;
 					double lastYVal = physicalY;
-					const int maxIterations = 200;
+					const int maxIterations = 80 * (sin(movementAngle) + 1.0);
 
 					for (iteration = 0; iteration < maxIterations; ++iteration) {
 						double nextXVal = lastXVal * lastXVal - lastYVal * lastYVal + physicalX;
@@ -121,7 +126,7 @@ int main(int, char**)
 				} else /* FractalType::Julia */ {
 					int iteration;
 					double lastXVal = physicalX, lastYVal = physicalY;
-					const int maxIterations = 20;
+					const int maxIterations = 30;
 
 					for (iteration = 0; iteration < maxIterations; ++iteration) {
 						double nextXVal = lastXVal * lastXVal - lastYVal * lastYVal + juliaCX;
