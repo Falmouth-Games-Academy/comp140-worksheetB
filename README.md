@@ -4,7 +4,7 @@ My concept for my game will be similar view style to Galaga: Destination Earth w
 The player will be able to choose from factions which will have benifits and losses and the story will be based around the fallout between factions.
 -First Person, Singleplayer RPG
 
-##Controller Proposal
+## Controller Proposal
 I want a simple console controller, that is much like a spaceship console. Slide potentiometers for thrusters and multiple buttons and switches for alternative functions. Most of my plans are based on elite dangerous custom controllers, however I plan to have more functionality.
 
 ![alt text](https://cdn.instructables.com/F2V/B3YD/IZ6C32H7/F2VB3YDIZ6C32H7.LARGE.jpg)
