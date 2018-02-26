@@ -4,14 +4,14 @@
 
 I would like to create a 2D top down 'Space Invaders' style game in which the player controls a trebuchet and has to hit units on a battlefield as well as possibly the city gates of an enemy stronghold.
 
-#Core Mechanics
+# Core Mechanics
 * Player controls a trebuchet with a fixed position at the bottom of the screen.
 * 180 degree rotation movement to aim the trebuchet.
 * Several set distances that the trebuchet is calibrated for.
 * Destroy the enemy army before it reaches you.
 * Once the defending army reaches the player the game is over.
 
-#Stretch Goals
+# Stretch Goals
 * Destroy City Gates and watchtowers for extra points.
 * A friendly army to encourage more precise aiming to limit friendly fire.
 
