@@ -1,21 +1,21 @@
 # comp140-worksheetB
 
-# Potential death
+# Part A
 
-## Summary
-In Potential death you play in first person, a character who is in an ever lasting free-fall. The aim of the game is to dodge objects on your decent and beat your high score. Score will be based of off the meters you have been able to fall before going splat.
-It will be set in an abandoned mine shaft.
+## Ultimate labyrinth
+Ultimate labyrinth brings the classic labyrinth game to your computer, allowing for multiple levels and challenges whilst still maintaining the classic controlls.
 
 ## Mechanics
-One potentiometer will control the x axis of the character whilst the other will control the y axis. Dodge as many objects as you can during a free-fall.
+The game will play out just like the normal labyrinth board game. Where the player has to follow the predefined path marked out with a black line to the end of the maze without falling victim to the unforgiving and treterous black holes which scatter their path. If the misfortune occurs of their ball falling down one of the holes, they have to start again from the start.
 
-## Controller
-The controller will consist of two potentiometers for controlling the x and y axis of the character and a button to quickly reset and start the game. A green LED will turn on if you have surpassed your previous high score.
+There will be a time trial mode where each map will have a time to beat which has been set by the creator of the game. A hardcore mode will also be added where you only have one life (cannot fall down any holes) to get through as many levels as possible. 
 
+On casual mode, you will be able to keep track of fastest times and least mistfortunes to complete a level to see if you are getting better or not. Without the added stress/pressure of the other modes.
 
+#Part B
 
+## Research
 
+## Description
 
-
-## Other
-Labyrinth
+## Design
