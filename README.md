@@ -1,6 +1,6 @@
 # The Fractal
-Press Space to switch between the Mendelbrot and Julia set.
 GitHub Link: https://github.com/LXShades/comp140-worksheetB  
+Press Space to switch between the Mendelbrot and Julia set.  
 
 ## Initial controller research
 https://drive.google.com/open?id=1ag7VWp-_6ByFekKHsxQe3_BH2VBje6Dt6ullD5DRf4g  
@@ -31,7 +31,45 @@ The physique of the player's hand needs to be accounted for. Elastic components 
 
 It may be novel to make a hand puppet that is, indeed, just a rubber hand. This may be a stretch goal in the future, but finding ideal ways to fix the components to a 'naked' hand takes priority.  
 
-# Extra to the Page (no need to read this)
+# Controller Research
+## Roflpillar  
+![Rofl it didn't load what a cater-strophe](https://github.com/LXShadow/comp140-worksheetB/image1.png "Photo")
+**URL:** http://luckyframe.co.uk/works/roflpillar/  
+**Description:** A two-player game controlled by rolling around the floor to ‘drive’ a caterpillar on the game screen.  
+**What I like about it:** It’s funny and silly! It looks like something that’s almost as fun to watch as it is to play. Nothing like enjoying a game whilst making a fool of yourself at the same time!  
+
+Few games, even VR games, take whole body movement. It’s good exercise and fun, and potentially immersive. I question how much precision control the players have, but am aware that’s not important for this kind of game. The biggest selling point is the novelty of it, and that the controls of the game roughly match the actions I undertake during my creative process.  
+
+Most interesting is the scale of it. I wonder if there are similar large controllers that could support a moving standing-up posture instead?  
+
+**Technical notes:** Demonstrates the feasibility of a large-scale motion controller.  
+
+## Tripad
+**URL:** http://alexk.net/tripad/  
+**Description:** Multiplayer game played by three players on three different panels of a connected entity.  
+**What I like about it:** I like multiplayer games and think it’s cool that one could be made in such a way that three players can have their own screen but still play next to one another. It has creative use of Launchpad Mini devices. Really cool that the pixels are also buttons--making a controller that supports output in addition to input could bring my project to life.  
+
+On the other hand, I’m not sure I’d want to make a game with only colours as avatars. Being an artistic person who is a programmer and is bad at art, and being literally the opposite of an artist in every other way right down to the neatly arranged M&Ms, I’d want a more graphical game to add some immersion to the element of control. Custom controllers can offer a lot of immersion to begin with, so I want to push that as far as I can.  
+
+Regardless, I like the technical creativity of this controller, and the additional human element element when players are brought together.  
+
+**Technical notes:**  
+This controller comprises three Novation Launchpad Minis connected and controlled through a MIDI interface. It appears not to use an Arduino--possibly just reading directly from a MIDI hub with an appropriate library.  
+
+## Snail Run
+
+**URL:** http://www.abstractmachine.net/blog/snail-run/
+**Description:** Gesture-controlled game where you play as a snail controlled by a snail glove.  
+**What I like about it:** I like the idea of controlling with gestures without holding a controller. If I did something similar, however, I’d add more feedback of some kind, whether it’s vibration or motorised reactive pistons. I’d be tempted to use this kind of design if I go ahead with my masochistic punch-yourself boxing game idea.  
+
+I’m personally interested in taking this controller type even further into a ‘naked’ form, where flex sensors could be attached to the fingers using rings. It’d be a little fiddly but in some ways less invasive than wearing a glove and could add to the ‘immersion’ of my Hand Game proposal.
+
+**Technical notes:**  
+This controller uses flex sensors on top of the hand for detecting finger bending. A prototype picture (https://www.flickr.com/photos/abstractmachine/16089699941) shows a prototype in action.  
+
+To aid the workflow, during prototyping the team used tri-button mouse controls in the game. This helped them design the movements of the snail before the controller was completed. I may find myself using similar prototyping methods to help speed up the development of the game while waiting for the components.  
+
+# Extra Stuff (no need to read this)
 We were asked to write a page for the proposals, and to my credit, all of the text below is part of the page. I have cut it out so that this page does not exceed a page, however, either way it is unlikely to exceed a page as it is, indeed, a page. Further to this though, one could observe that this page does not fit within one monitor screen. This is true, however it could be strongly argued that a monitor is not a page. To exceed a page would require that more than one page be stuck to the screen, perhaps with some sticky tape.  
 
 ### Quirks
