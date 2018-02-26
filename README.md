@@ -23,3 +23,7 @@ I thought this could be simulated by placing various weights in a container with
 The more weight is added to the counterweight, the further the projectile will fly.
 A lever with a simple on/off connection could be used to fire the trebuchet.
 
+## Research
+I got the idea for the crank mechanism from a couple of alt controllers, the Tank Controller that was created by a former student, in which a crank was rotated to change the rotation of the turret on a tank, and the Safe game in which a valve is rotated to open a safe. My crank system will be different in that it will be a horizontal crank.
+Chicken Jump is an endless jumper for 1 to 8 players in which you need to avoid cars and trucks. It can be played at home on a keyboard, but is much more fun with physical pads on which the players have to jump. This game gave me the idea to use pressure sensors to control how far the projectile is thrown.
+
