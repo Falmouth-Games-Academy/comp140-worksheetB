@@ -59,7 +59,7 @@ This controller comprises three Novation Launchpad Minis connected and controlle
 
 ## Snail Run
 ![Error: image load snailure occurred](https://github.com/LXShades/comp140-worksheetB/blob/master/image2.png "Photo")  
-**URL:** http://www.abstractmachine.net/blog/snail-run/
+**URL:** http://www.abstractmachine.net/blog/snail-run/  
 **Description:** Gesture-controlled game where you play as a snail controlled by a snail glove.  
 **What I like about it:** I like the idea of controlling with gestures without holding a controller. If I did something similar, however, I’d add more feedback of some kind, whether it’s vibration or motorised reactive pistons. I’d be tempted to use this kind of design if I go ahead with my masochistic punch-yourself boxing game idea.  
 
