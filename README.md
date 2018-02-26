@@ -33,7 +33,7 @@ It may be novel to make a hand puppet that is, indeed, just a rubber hand. This 
 
 # Controller Research
 ## Roflpillar  
-![Rofl it didn't load what a cater-strophe](https://github.com/LXShades/comp140-worksheetB/blob/master/image1.png "Photo")
+![Rofl it didn't load what a cater-strophe](https://github.com/LXShades/comp140-worksheetB/blob/master/image1.png "Photo")  
 **URL:** http://luckyframe.co.uk/works/roflpillar/  
 **Description:** A two-player game controlled by rolling around the floor to ‘drive’ a caterpillar on the game screen.  
 **What I like about it:** It’s funny and silly! It looks like something that’s almost as fun to watch as it is to play. Nothing like enjoying a game whilst making a fool of yourself at the same time!  
@@ -45,7 +45,7 @@ Most interesting is the scale of it. I wonder if there are similar large control
 **Technical notes:** Demonstrates the feasibility of a large-scale motion controller.  
 
 ## Tripad
-![Error: no pun found](https://github.com/LXShades/comp140-worksheetB/blob/master/image3.png "Photo")
+![Error: no pun found](https://github.com/LXShades/comp140-worksheetB/blob/master/image3.png "Photo")  
 **URL:** http://alexk.net/tripad/  
 **Description:** Multiplayer game played by three players on three different panels of a connected entity.  
 **What I like about it:** I like multiplayer games and think it’s cool that one could be made in such a way that three players can have their own screen but still play next to one another. It has creative use of Launchpad Mini devices. Really cool that the pixels are also buttons--making a controller that supports output in addition to input could bring my project to life.  
@@ -58,7 +58,7 @@ Regardless, I like the technical creativity of this controller, and the addition
 This controller comprises three Novation Launchpad Minis connected and controlled through a MIDI interface. It appears not to use an Arduino--possibly just reading directly from a MIDI hub with an appropriate library.  
 
 ## Snail Run
-![Error: image load snailure occurred](https://github.com/LXShades/comp140-worksheetB/blob/master/image2.png "Photo")
+![Error: image load snailure occurred](https://github.com/LXShades/comp140-worksheetB/blob/master/image2.png "Photo")  
 **URL:** http://www.abstractmachine.net/blog/snail-run/
 **Description:** Gesture-controlled game where you play as a snail controlled by a snail glove.  
 **What I like about it:** I like the idea of controlling with gestures without holding a controller. If I did something similar, however, I’d add more feedback of some kind, whether it’s vibration or motorised reactive pistons. I’d be tempted to use this kind of design if I go ahead with my masochistic punch-yourself boxing game idea.  
