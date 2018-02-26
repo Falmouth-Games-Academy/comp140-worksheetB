@@ -20,3 +20,6 @@ double CalculateMandelbrotX(double lastX, double lastY, double xCoordinate);
 
 double CalculateJuliaX(double lastX, double lastY, double xCoordinate, int i);
 double CalculateJuliaY(double lastX, double lastY, double yCoordinate, int i);
+
+double CalculateJulia2X(double lastX, double lastY, double xCoordinate);
+double CalculateJulia2Y(double lastX, double lastY, double yCoordinate);

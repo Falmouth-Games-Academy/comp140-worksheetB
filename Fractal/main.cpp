@@ -55,7 +55,7 @@ int main(int, char**)
 	const double minX = -2, maxX = 1, minY = -1.5, maxY = 1.5;
 
 	// Show instructions on the console window
-	cout << "Press 1 or 2 to choose a fractal, 1 for Mandlebrot, 2 for Julia:\n>";
+	cout << "Press 1, 2 or 3 to choose a fractal, \n1 for Mandlebrot, 2 for Multi Julia Set, 3 for second Julia fractal:\n>";
 
 	//Controls the game loop
 	bool quit = false;
@@ -63,6 +63,7 @@ int main(int, char**)
 	//Set up for key press
 	bool fractal1 = false;
 	bool fractal2 = false;
+	bool fractal3 = false;
 
 	//Holds events coming from SDL
 	SDL_Event event;
@@ -83,12 +84,21 @@ int main(int, char**)
 				if (event.key.keysym.sym == SDLK_1)
 				{
 					fractal2 = false;
+					fractal3 = false;
 					fractal1 = true;
 				}
 				if (event.key.keysym.sym == SDLK_2)
 				{
 					fractal1 = false;
+					fractal3 = false;
 					fractal2 = true;
+
+				}
+				if (event.key.keysym.sym == SDLK_3)
+				{
+					fractal1 = false;
+					fractal2 = false;
+					fractal3 = true;
 				}
 			}
 		}
@@ -126,8 +136,9 @@ int main(int, char**)
 				int numIterations = 100;
 
 				// Set the initial x and y to 0 for the first iteration
-				double lastX = 0;
-				double lastY = 0;
+				double lastX = x0;
+				double lastY = y0;
+
 				double thisX = 0.0;
 				double thisY = 0.0;
 
@@ -141,42 +152,44 @@ int main(int, char**)
 						thisY = CalculateMandelbrotY(lastX, lastY, y0);
 					}
 
-					// Funcions for the Julia Set x and y if "2" key is pressed
+					// Funcions for the Multi Julia Set x and y if "2" key is pressed
 					if (fractal2 == true)
 					{
 						thisX = CalculateJuliaX(lastX, lastY, x0, iteration);
 						thisY = CalculateJuliaY(lastX, lastY, y0, iteration);
+					}
+
+					// Funcions for the second Julia Set x and y if "3" key is pressed
+					if (fractal3 == true)
+					{
+						thisX = CalculateJulia2X(lastX, lastY, 0.25);
+						thisY = CalculateJulia2Y(lastX, lastY, 0.5);
 					}
 					
 					// Inrease iteration number
 					iteration++;
 
 					// Fractal computation to determine shape (where next pixel colour is changed)
-					if ((thisX * thisX) + (thisY * thisY) >= 4)
+					if ((thisX * thisX) + (thisY * thisY) >= 4.0)
 					{
 						/* Write the pixel. Experimenting with various different colour combinations*/
 						colourPixel = SDL_MapRGB(pixelFormat, iteration*255/ 300, iteration*iteration, thisY * thisX / iteration);
-						//colourPixel = SDL_MapRGB(pixelFormat, iteration%255, iteration % 255, iteration % 255);
-						//colourPixel = SDL_MapRGB(pixelFormat, (iteration+(int)thisX*10)%255, iteration%255, (iteration + (int)thisX * (int)thisY) %255);
-						//colourPixel = SDL_MapRGB(pixelFormat, iteration*thisX, 255%(iteration*iteration), thisY);
-						//colourPixel = SDL_MapRGB(pixelFormat, iteration, iteration*iteration, lastY);
+						colourPixel = SDL_MapRGB(pixelFormat, iteration%255, iteration % 255, iteration % 255);
+						colourPixel = SDL_MapRGB(pixelFormat, (iteration+(int)thisX*10)%255, iteration%255, (iteration + (int)thisX * (int)thisY) %255);
+						colourPixel = SDL_MapRGB(pixelFormat, iteration*thisX, 255%(iteration*iteration), thisY);
+						colourPixel = SDL_MapRGB(pixelFormat, iteration, iteration*iteration, lastY);
 			
 						break;
 					}
-
 					// Previous values of x and y to be used in the next iteration
 					lastX = thisX;
 					lastY = thisY;
-
 				}
 
 				// Now we can set the pixel(s) we want.
 				pixels[pixelPosition] = colourPixel;
 			}
 		}
-
-
-
 
 		SDL_UnlockTexture(fractalTexture);
 
@@ -208,18 +221,30 @@ double CalculateMandelbrotX(double lastX, double lastY, double xCoordinate)
 }
 double CalculateMandelbrotY(double lastX, double lastY, double yCoordinate)
 {
-	double thisY = (2 * lastX * lastY) + yCoordinate;
+	double thisY = (2.0 * lastX * lastY) + yCoordinate;
 	return thisY;
 }
 
 /* Fuctions to calculate a Julia fractal for x and y*/
 double CalculateJuliaX(double lastX, double lastY, double xCoordinate, int iteration)
 {
-	double thisX = pow((lastX * lastX) + (lastY * lastY), (iteration / 2)) * cos(iteration * atan2(lastY, lastX)) + xCoordinate;
+	double thisX = pow((lastX * lastX) + (lastY * lastY), (iteration / 2.0)) * cos(iteration * atan2(lastY, lastX)) + xCoordinate;
 	return thisX;
 }
 double CalculateJuliaY(double lastX, double lastY, double yCoordinate, int iteration)
 {
-	double thisY = pow((lastX * lastX) + (lastY * lastY), (iteration / 2)) * sin(iteration * atan2(lastY, lastX)) + yCoordinate;
+	double thisY = pow((lastX * lastX) + (lastY * lastY), (iteration / 2.0)) * sin(iteration * atan2(lastY, lastX)) + yCoordinate;
+	return thisY;
+}
+
+/* Fuctions to calculate a second Julia fractal for x and y*/
+double CalculateJulia2X(double lastX, double lastY, double xCoordinate)
+{
+	double thisX = ((lastX * lastX) - (lastY * lastY)) + xCoordinate;
+	return thisX;
+}
+double CalculateJulia2Y(double lastX, double lastY, double yCoordinate)
+{
+	double thisY = (2.0 * lastX * lastY) + yCoordinate;
 	return thisY;
 }
