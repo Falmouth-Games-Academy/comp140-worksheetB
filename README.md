@@ -18,6 +18,10 @@ On casual mode, you will be able to keep track of fastest times and least mistfo
 
 
 ## Description
+The controller will be made up of a wooden box with a potentiometer on the front and right. The front one will control tipping left/right whereas the one on the right will control tipping up/down.
 
 ## Design
+![ControllerConcept](ControllerConcept.png)
+Format: ![Alt Text](url)
 
+The arduino will be hidden inside the wooden box with the only two visible electronics being the wires out the back and the two potentiometers, one on the front, the other on the right. My stretch goal is to add LEDs on top of the box in a 32x32 grid to show the current progress of the ball in the maze.
