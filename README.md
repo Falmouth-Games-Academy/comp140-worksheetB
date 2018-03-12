@@ -24,4 +24,6 @@ The controller will be made up of a wooden box with a potentiometer on the front
 ![ControllerConcept](ControllerConcept.png)
 Format: ![Alt Text](url)
 
-The arduino will be hidden inside the wooden box with the only two visible electronics being the wires out the back and the two potentiometers, one on the front, the other on the right. My stretch goal is to add LEDs on top of the box in a 32x32 grid to show the current progress of the ball in the maze.
+The arduino will be hidden inside the wooden box with the only two visible electronics being the wires out the back and the two potentiometers, one on the front, the other on the right.
+
+Finally there will be a gyroscope inside which can be toggled on and off by a button on top, the state of which will be indicated by an LED on top next to the button. This will allow the user to switch between the traditional pivot movement system and a more involving movement in which you roll the ball my tilting the board physically.
