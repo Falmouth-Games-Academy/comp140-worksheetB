@@ -68,24 +68,36 @@ int main(int, char**)
 		//do drawing here
 		SDL_LockTexture(fractalTexture, NULL, (void**)&pixels, &pitch);
 
+		
+		color randomcolor(double a, double b, double x, double y)
+		{
+			for (int i = 0; i<ITERATIONS; i++) {
+				if (x*x + y*y > 4.0) {
+					double grey = (double)(Iter - i) / (double)Iter;
+					return color(red);
+				}
+				double xx = x*x - y*y + a;
+				double yy = 2.0*x*y + b;
+				x = xx; y = yy;
+			}
+			return color(0, 0, 0);
 
+		for (int i = 0; i < Image_size; i++) {
+			double x0 = ((double)i / (Image_size - 1)) * Scale - Scale * 0.5 - X_OFF;
+		}
 
-		for (int pixelY = 0; pixelY < windowHeight; pixelY++) {
-			// TODO: Map the y coordinate into the range minY to maxY
-			//double y0 =
-			for (int pixelX = 0; pixelX < windowWidth; pixelX++){
+			for (int j = 0; j < IMG_SIZE; j++) {
+				double y0 = ((double)j / (Image_size - 1)) * Scale - Scale * 0.5
+					- Y_OFF;
+			}
+				unsigned int pixelPosition = Image_size * (pitch / pixelFormat->BytesPerPixel) + pixelX;
 
-				// TODO: Map the x coordinate into the range minX to maxX
-				//double x0 =
+				colourA = random_colour(a, b, -x0, -y0); {
+					img(i, j, 0) = c.r * 1000.0;
+					img(i, j, 1) = c.g * 3000.0;
+					img(i, j, 2) = c.b * 5000.0;
+				}
 
-				unsigned int pixelPosition = pixelY * (pitch / pixelFormat->BytesPerPixel) + pixelX;
-
-				// TODO: implement the algorithm to colour a single pixel (x0, y0) of the fractal
-				// The code below simply fills the screen with random pixels
-
-				// Write the pixel
-				// TODO: change this for desired pixel colour value
-				Uint32 colour = SDL_MapRGB(pixelFormat, rand()%255, rand() % 255, rand() % 255);
 				// Now we can set the pixel(s) we want.
 				pixels[pixelPosition] = colour;
 			}
