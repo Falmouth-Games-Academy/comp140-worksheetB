@@ -8,6 +8,8 @@ int main(int, char**)
 {
 	int windowWidth = 800;
 	int windowHeight = 800;
+	double doubleWindowWidth = 800;
+	double doubleWindowHeight = 800;
 	//Initialise the Video Part of SDL2
 	if (SDL_Init(SDL_INIT_VIDEO) != 0) {
 		//Print out an error message to the screen if this fails
@@ -71,23 +73,44 @@ int main(int, char**)
 
 
 		for (int pixelY = 0; pixelY < windowHeight; pixelY++) {
-			// TODO: Map the y coordinate into the range minY to maxY
-			//double y0 =
+			// Map the y coordinate into the range minY to maxY
+			double y0 = (pixelY / doubleWindowWidth) * (maxY - minY) + minY;
+
 			for (int pixelX = 0; pixelX < windowWidth; pixelX++){
 
-				// TODO: Map the x coordinate into the range minX to maxX
-				//double x0 =
+				// Map the x coordinate into the range minX to maxX
+				double x0 = (pixelX / doubleWindowWidth) * (maxX - minX) + minX;
 
 				unsigned int pixelPosition = pixelY * (pitch / pixelFormat->BytesPerPixel) + pixelX;
 
-				// TODO: implement the algorithm to colour a single pixel (x0, y0) of the fractal
-				// The code below simply fills the screen with random pixels
+				// algorithm to colour a single pixel (x0, y0) of the fractal
+				double lastX = x0; // used to store the X value for recursion
+				double lastY = y0; // used to store the Y value for recursion
+				int i = 0; // counter
+				int iterations = 40; // max number of iterations
 
-				// Write the pixel
-				// TODO: change this for desired pixel colour value
-				Uint32 colour = SDL_MapRGB(pixelFormat, rand()%255, rand() % 255, rand() % 255);
-				// Now we can set the pixel(s) we want.
-				pixels[pixelPosition] = colour;
+				while  (i < iterations) {
+					double currentX = ((lastX * lastX) - (lastY * lastY)) + x0;
+					double currentY = (2 * lastX * lastY) + y0;
+					double smallestValue = (currentX * currentX) + (currentY * currentY);
+					i++;
+					lastX = currentX; // set the current X value to the variable to be used in the next iteration
+					lastY = currentY; // set the current Y value to the variable to be used in the next iteration
+					if (smallestValue >= 4) {
+						// Set Pixel colour
+						int tempColour = 255 - (i * 5); //  uses the current value of i to help pick a colour for the green value
+						Uint32 colour = SDL_MapRGB(pixelFormat, 0, tempColour, 140);
+						// Now we can set the pixel(s) we want.
+						pixels[pixelPosition] = colour;
+						break;
+					}
+					else if (i == iterations) {
+						// Set Pixel colour
+						Uint32 colour = SDL_MapRGB(pixelFormat, 0, 0, 0);
+						// Now we can set the pixel(s) we want.
+						pixels[pixelPosition] = colour;
+					}
+				}
 			}
 		}
 
