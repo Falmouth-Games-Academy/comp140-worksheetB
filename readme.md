@@ -4,6 +4,7 @@
 The game intends to be a simple hot air balloon racing game with similar mechanics to Balloon Fight. You race predominantly vertically, with some horizontal parts, through checkpoints.
 You are able to set back opponents by landing on top of them while also flying through the ringed checkpoints. Managing your ascension, decline, and direction with the balloon burner peripheral.
 ![alt text](http://oi68.tinypic.com/2i0437c.jpg "Game Diagram of hot air balloons flying through rings")
+
 The core game mechanics are:
 - The ascension and decline mechanics.
     These will have to be tuned in such a way that it replicates the way in which hot air balloons move, to an extent.
