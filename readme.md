@@ -1,3 +1,2 @@
-
-#GAME PROPOSAL
-##Joachim Rayski
+GAME PROPOSAL
+Joachim Rayski
