@@ -29,7 +29,7 @@ Finally, I intend to attach several LED's to the second part to display warnings
 
 For the game itself I intend to create a simple 3D space exploration game, with some basic interactivity (such as landing on certain stellar objects or crashing into planets) and some basic combat. As for the type of game I will be aiming for, I would most likely go for sanbox, as it presents little restrictions to the player, and much creative freedom for me to add and remove ideas as I continue the development process. 
 
-As for the biggest setbacks I plan on encountering, I could name:
+As for the biggest setbacks I expect to encounter, I could name:
 * My lack of knowledge in SDL will likely slow the initial development
 * Since I will be using OpenGL I will need to research it intensely
 * AI for enemies will certainly prove difficult, but I am confident that I can work it out
