@@ -1,0 +1,8 @@
+UI - Lifes counter, point counter, bullet counter (indicates when player will have to reload the gun)
+
+Player needs to shoot enemies (spawning on the top of the screen) before they reach base (bottom of the screen).
+
+Player will have to move contreoller around to aim, press the button, getting the feedback with the motor, to 
+shoot and reload by pressign a button and pushing magazine upwards.
+
+Parts required: Accelerometer/gyroscope, button, IR sensor, motor, arduino and other components to make it work.
