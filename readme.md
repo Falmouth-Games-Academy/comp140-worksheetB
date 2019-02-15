@@ -1,2 +1,0 @@
-GAME PROPOSAL
-Joachim Rayski
