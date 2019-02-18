@@ -6,6 +6,7 @@
 
 int windowWidth = 800;
 int windowHeight = 800;
+int maxIterations = 300;
 
 int main(int, char**) 
 {
@@ -81,29 +82,78 @@ int main(int, char**)
 		{
 			// TODO: Map the y coordinate into the range minY to maxY
 			//double y0 =
-
-			double y0 = pixelY / windowHeight * (maxY - minY) + minY;
+			double y0 = ((double)pixelY / windowHeight) * (maxY - minY) + minY;
 
 			for (int pixelX = 0; pixelX < windowWidth; pixelX++)
 			{
 				// TODO: Map the x coordinate into the range minX to maxX
 				//double x0 =
-
-				double x0 = pixelX / windowWidth * (maxX - minX) + minX;
+				double x0 = ((double)pixelX / windowWidth) * (maxX - minX) + minX;
 
 				unsigned int pixelPosition = pixelY * (pitch / pixelFormat->BytesPerPixel) + pixelX;
 
 				// TODO: implement the algorithm to colour a single pixel (x0, y0) of the fractal
 
 
+
+
+				// Copied from Ashley
+				// iterate to find the value of the pixel for the fractal
+				double x = 0, y = 0;
+				int iter = 0;
+
+				while ((x*x) + (y*y) <= 4 && iter < maxIterations)
+				{
+					double nextX = (x*x) - (y*y) + x0;
+					y = (2 * x*y) + y0;
+					x = nextX;
+					iter++;
+				}
+
+
+				Uint32 colour = SDL_MapRGB(pixelFormat, rand() % 30, rand() % 30, rand() % 30);
+
+				if (iter > ((float)maxIterations * 0.99f))
+				{
+					colour = SDL_MapRGB(pixelFormat, 200, rand() % 100, 200);
+				}
+				else if (iter > ((float)maxIterations * 0.2f))
+				{
+					colour = SDL_MapRGB(pixelFormat, 100, 100, 155 + (rand() % 100));
+				}
+				else if (iter > ((float)maxIterations * 0.1f))
+				{
+					colour = SDL_MapRGB(pixelFormat, 155 + (rand() % 100), 0, 0);
+				}
+
+				// End of code copied from ashley
+
+
+
+
+
+
+
 				// The code below simply fills the screen with random pixels
 
 				// Write the pixel
 				// TODO: change this for desired pixel colour value
-				Uint32 colour = SDL_MapRGB(pixelFormat, rand() % 255, rand() % 255, rand() % 255);
+				// Uint32 colour = SDL_MapRGB(pixelFormat, rand() % 255, rand() % 255, rand() % 255);
 
 				// Now we can set the pixel(s) we want.
 				pixels[pixelPosition] = colour;
+
+
+
+
+
+
+				//double xPlus1 = (pixelX * pixelX) - (pixelY * pixelY) + x0;
+				//double yPlus1 = (2 * pixelX * pixelY) + y0;
+				//pixelPosition = yPlus1 * (pitch / pixelFormat->BytesPerPixel) + xPlus1;
+
+				//colour = SDL_MapRGB(pixelFormat, rand() % 50, rand() % 50, rand() % 50);
+				//pixels[pixelPosition] = colour;
 			}
 		}
 		SDL_UnlockTexture(fractalTexture);
