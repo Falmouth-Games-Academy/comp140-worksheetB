@@ -4,6 +4,7 @@
 
 #include "stdafx.h"
 
+
 int main(int, char**) 
 {
 	int windowWidth = 800;
@@ -14,8 +15,7 @@ int main(int, char**)
 		std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
 		return 1;
 	}
-
-	//Creare a 800x800 window with the title Fractal
+	//Create a 800x800 window with the title Fractal
 	SDL_Window *window = SDL_CreateWindow("Fractal", 100, 100, windowWidth, windowHeight, SDL_WINDOW_SHOWN);
 	if (window == nullptr) {
 		//Print out error if this fails
@@ -23,7 +23,6 @@ int main(int, char**)
 		SDL_Quit();
 		return 1;
 	}
-
 	//Create a renderer
 	SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	if (renderer == nullptr) {
@@ -42,14 +41,15 @@ int main(int, char**)
 	//Get the pixel format the texture
 	SDL_PixelFormat * pixelFormat = SDL_AllocFormat(SDL_PIXELFORMAT_RGB888);
 
-
 	// Minimum and maximum coordinates for the fractal
 	const double minX = -2, maxX = 1, minY = -1.5, maxY = 1.5;
 
 	//Controls the game loop
 	bool quit = false;
+
 	//Holds events coming from SDL
 	SDL_Event event;
+
 	//Game Loop, while quit is false
 	while (!quit)
 	{
@@ -60,15 +60,11 @@ int main(int, char**)
 				quit = true;
 			}
 		}
-
 		//Clear the renderer
 		SDL_RenderClear(renderer);
 
-		
 		//do drawing here
 		SDL_LockTexture(fractalTexture, NULL, (void**)&pixels, &pitch);
-
-
 
 		for (int pixelY = 0; pixelY < windowHeight; pixelY++) {
 			// TODO: Map the y coordinate into the range minY to maxY
@@ -90,16 +86,13 @@ int main(int, char**)
 				pixels[pixelPosition] = colour;
 			}
 		}
-
 		SDL_UnlockTexture(fractalTexture);
 		
 		SDL_RenderCopy(renderer, fractalTexture, NULL, NULL);
 		//Display the work the renderer has been doing, this make something appear on the screen
 
-
 		SDL_RenderPresent(renderer);
 	}
-
 	//cleanup!
 	SDL_FreeFormat(pixelFormat);
 	SDL_DestroyTexture(fractalTexture);
