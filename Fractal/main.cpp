@@ -20,6 +20,11 @@ int Mandelbrot_fractal(double x0, double y0, int maxIterations)
 	return iter;
 }
 
+Uint32 GetColor()
+{
+
+}
+
 int main(int, char**) 
 {
 	int windowWidth = 1200;
@@ -83,12 +88,12 @@ int main(int, char**)
 		//do drawing here
 		SDL_LockTexture(fractalTexture, NULL, (void**)&pixels, &pitch);
 
-		int iterations = 25;
+		// add some extra layers for a cool fx
 		int layers = 5;
 		for (int layer = 0; layer <= layers; layer++)
 		{
-
-			iterations = 25 + (25 * layer);
+			// work out the amount of interrates, the lower the iter the more basic the fractal is
+			int iterations = 25 + (25 * layer);
 
 			for (int pixelY = 0; pixelY < windowHeight; pixelY++) {
 				//Map the y coordinate into the range minY to maxY
@@ -105,15 +110,15 @@ int main(int, char**)
 					int iter = Mandelbrot_fractal(x0, y0, iterations);
 					// Write the pixel
 					// work out the color for the pixel
-					Uint32 colour = SDL_MapRGB(pixelFormat, 255, 255, 255);// rand() % 255, rand() % 255, rand() % 255);
-					bool set = true;
+					Uint32 colour = SDL_MapRGB(pixelFormat, 255, 255, 255); 
+					bool set = true;	//should we set the pixel
 
 					if (iter > ((float)iterations * 0.90f))
-						colour = SDL_MapRGB(pixelFormat, 200+((55/layers)*layer), 200, 200);
+						colour = SDL_MapRGB(pixelFormat, 200 + ((55/layers) * layer), 200, 200);
 					else if (iter > ((float)iterations * 0.2f))
-						colour = SDL_MapRGB(pixelFormat, 100, 100+((155 / layers)*layer), 100);
+						colour = SDL_MapRGB(pixelFormat, 100, 100 + ((155 / layers) * layer), 100);
 					else if (iter > ((float)iterations * 0.1f))
-						colour = SDL_MapRGB(pixelFormat, 50 , 50 , 50 + ((205 / layers)*layer));
+						colour = SDL_MapRGB(pixelFormat, 50 , 50 , 50 + ((205 / layers) * layer));
 					else
 						set = false;
 
@@ -127,9 +132,8 @@ int main(int, char**)
 		SDL_UnlockTexture(fractalTexture);
 		
 		SDL_RenderCopy(renderer, fractalTexture, NULL, NULL);
+
 		//Display the work the renderer has been doing, this make something appear on the screen
-
-
 		SDL_RenderPresent(renderer);
 	}
 
