@@ -68,7 +68,7 @@ int main(int, char**)
 		//do drawing here
 		SDL_LockTexture(fractalTexture, NULL, (void**)&pixels, &pitch);
 
-		int maxIterations = 300;
+		int maxIterations = 100;
 
 		for (int pixelY = 0; pixelY < windowHeight; pixelY++) {
 			//Map the y coordinate into the range minY to maxY
