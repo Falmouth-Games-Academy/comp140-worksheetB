@@ -6,7 +6,7 @@
 
 int Mandelbrot_fractal(double x0, double y0, int maxIterations)
 {
-	double x = 0, y = 0;
+	double x = x0, y = y0;
 	int iter = 0;
 
 	while ((x*x) + (y*y) <= 4 && iter < maxIterations)
@@ -18,11 +18,6 @@ int Mandelbrot_fractal(double x0, double y0, int maxIterations)
 	}
 
 	return iter;
-}
-
-Uint32 GetColor()
-{
-
 }
 
 int main(int, char**) 
@@ -66,7 +61,6 @@ int main(int, char**)
 
 	// Minimum and maximum coordinates for the fractal
 	const double minX = -2, maxX = 1, minY = -1.5, maxY = 1.5;
-
 	//Controls the game loop
 	bool quit = false;
 	//Holds events coming from SDL
@@ -125,6 +119,7 @@ int main(int, char**)
 					if(set || layer == 0)
 						// Now we can set the pixel(s) we want.
 						pixels[pixelPosition] = colour;
+
 				}
 			}
 		}
