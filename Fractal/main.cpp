@@ -80,25 +80,21 @@ int main(int, char**)
 
 		for (int pixelY = 0; pixelY < windowHeight; pixelY++)
 		{
-			// TODO: Map the y coordinate into the range minY to maxY
-			//double y0 =
-			double y0 = ((double)pixelY / windowHeight) * (maxY - minY) + minY;
-
 			for (int pixelX = 0; pixelX < windowWidth; pixelX++)
 			{
-				// TODO: Map the x coordinate into the range minX to maxX
-				//double x0 =
-				double x0 = ((double)pixelX / windowWidth) * (maxX - minX) + minX;
-
 				unsigned int pixelPosition = pixelY * (pitch / pixelFormat->BytesPerPixel) + pixelX;
+
+				double x0 = ((double)pixelX / windowWidth) * (maxX - minX) + minX;
+				double y0 = ((double)pixelY / windowHeight) * (maxY - minY) + minY;
 
 				double currentX = 0;
 				double currentY = 0;
+
 				int currentIteration = 0;
 				int maxIterations = 175;
 
-				double XSquared = currentX * currentX;
-				double YSquared = currentY * currentY;
+				double XSquared = 0;
+				double YSquared = 0;
 
 				while (((XSquared + YSquared) <= 4) && (currentIteration < maxIterations))
 				{
@@ -139,7 +135,7 @@ int main(int, char**)
 		
 		SDL_RenderCopy(renderer, fractalTexture, NULL, NULL);
 
-		//Display the work the renderer has been doing, this make something appear on the screen
+		//Display the work the renderer has been doing, this makes something appear on the screen
 		SDL_RenderPresent(renderer);
 	}
 	//cleanup!
