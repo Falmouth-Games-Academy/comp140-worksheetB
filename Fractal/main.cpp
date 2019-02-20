@@ -5,6 +5,9 @@
 #include "stdafx.h"
 #include "main.h"
 
+// Lower numbers result in thicker outlines, 175 is a nice result
+int maxIterations = 175;
+
 int main(int, char**) 
 {
 	if ( ! Setup() ) { return 0; }
@@ -47,6 +50,7 @@ bool InitializeVideo()
 bool CreateWindow()
 {
 	window = SDL_CreateWindow("Fractal", 100, 100, windowWidth, windowHeight, SDL_WINDOW_SHOWN);
+
 	if (window == nullptr)
 	{
 		std::cout << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
@@ -60,6 +64,7 @@ bool CreateWindow()
 bool CreateRenderer()
 {
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+
 	if (renderer == nullptr)
 	{
 		SDL_DestroyWindow(window);
@@ -75,6 +80,7 @@ bool CreateTexture()
 {
 	//Create a texture, STREAMING means that we will update the texture 
 	fractalTexture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STREAMING, windowWidth, windowHeight);
+	
 	if (fractalTexture == nullptr)
 	{
 		std::cout << "SDL_CreateTexture Error: " << SDL_GetError() << std::endl;
@@ -99,56 +105,60 @@ void GenerateFractal()
 {
 	for (int pixelY = 0; pixelY < windowHeight; pixelY++)
 	{
+		my_y0 = (((double)pixelY / windowHeight) * (maxY - minY)) + minY;
+
 		for (int pixelX = 0; pixelX < windowWidth; pixelX++)
 		{
-			unsigned int pixelPosition = pixelY * (WidthOfTextureInBytes / pixelFormat->BytesPerPixel) + pixelX;
+			my_x0 = (((double)pixelX / windowWidth) * (maxX - minX)) + minX;
 
-			double x0 = ((double)pixelX / windowWidth) * (maxX - minX) + minX;
-			double y0 = ((double)pixelY / windowHeight) * (maxY - minY) + minY;
+			currentX = 0.0f;
+			currentY = 0.0f;
+			currentIteration = 0;
 
-			double currentX = 0;
-			double currentY = 0;
+			pixelPosition = pixelX * (WidthOfTextureInBytes / pixelFormat->BytesPerPixel) + pixelY;
 
-			int currentIteration = 0;
-
-			double XSquared = 0;
-			double YSquared = 0;
-
-			while (((XSquared + YSquared) <= 4) && (currentIteration < maxIterations))
-			{
-				XSquared = currentX * currentX;
-				YSquared = currentY * currentY;
-
-				double nextX = (XSquared - YSquared) + x0;
-
-				currentY = (2 * currentX * currentY) + y0;
-
-				currentX = nextX;
-
-				currentIteration++;
-			}
-
-			/// Background colour, coloured a pure red
-			Uint32 colour = SDL_MapRGB(pixelFormat, 200, 0, 0);
-
-			if (currentIteration > ((float)maxIterations * 0.99f))
-			{
-				/// Inside of the fractal, coloured a busy black
-				colour = SDL_MapRGB(pixelFormat, rand() % 30, rand() % 30, rand() % 30);
-			}
-			else if (currentIteration > ((float)maxIterations * 0.2f))
-			{
-				/// Inner border, coloured a bright yellow
-				colour = SDL_MapRGB(pixelFormat, 255, 255, 0);
-			}
-			else if (currentIteration > ((float)maxIterations * 0.1f))
-			{
-				/// Outer border, coloured a strong orange
-				colour = SDL_MapRGB(pixelFormat, 255, 140, 0);
-			}
-			pixels[pixelPosition] = colour;
+			IterateThroughPixels();
+			ChangePixelColour();
 		}
 	}
+}
+
+void IterateThroughPixels()
+{
+	while ((currentX * currentX) + (currentY * currentY) <= 2*2 && currentIteration < maxIterations)
+	{
+		nextX = ((currentX * currentX) - (currentY * currentY)) + my_x0;
+
+		currentY = (2 * currentX * currentY) + my_y0;
+
+		currentX = nextX;
+
+		currentIteration++;
+	}
+}
+
+void ChangePixelColour()
+{
+	// Background colour set to RED
+	Uint32 colour = SDL_MapRGB(pixelFormat, 220, 0, 0);
+
+	if (currentIteration > (maxIterations * 0.99f))
+	{
+		/// Inside of the fractal, coloured a busy black
+		colour = SDL_MapRGB(pixelFormat, rand() % 30, rand() % 30, rand() % 30);
+	}
+	else if (currentIteration > (maxIterations * 0.2f))
+	{
+		/// Inner border, coloured a bright yellow
+		colour = SDL_MapRGB(pixelFormat, 255, 255, 0);
+	}
+	else if (currentIteration > (maxIterations * 0.1f))
+	{
+		/// Outer border, coloured a strong orange
+		colour = SDL_MapRGB(pixelFormat, 255, 140, 0);
+	}
+
+	pixels[pixelPosition] = colour;
 }
 
 void CheckForQuit()
