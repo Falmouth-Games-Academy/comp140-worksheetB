@@ -32,4 +32,10 @@ The pancake Sim will consist of frying pans for flipping the pancakes a jug for 
 
 For the design of the controller there will be a compact cooking top to house the frying pans and jug. On the front of the cooking top will be potentiometers for the nobs to control the cooking temperature. The frying pan will use a accelerometer/gyroscope to detect if the user is flipping the pancake and a light dependent resistor to detect if the frying pan is on the cooking top. I will also use accelerometer/gyroscope to track the movement and pour for the jug. The whisk will also house an accelerometer to detect if the player is whisking. For the fire alarm I will use a siren (with a 1k resistor to prevent it from being deafening) 
 
+The circuit will be set up something like this
+
 ![PCS2000 Circuit](pcs_v2_bb.png)
+
+frsit protype
+![Prototype](pcs_proto.jpg)
+
