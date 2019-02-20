@@ -4,6 +4,22 @@
 
 #include "stdafx.h"
 
+int Mandelbrot_fractal(double x0, double y0, int maxIterations)
+{
+	double x = 0, y = 0;
+	int iter = 0;
+
+	while ((x*x) + (y*y) <= 4 && iter < maxIterations)
+	{
+		double nextX = (x*x) - (y*y) + x0;
+		y = (2 * x*y) + y0;
+		x = nextX;
+		iter++;
+	}
+
+	return iter;
+}
+
 int main(int, char**) 
 {
 	int windowWidth = 1200;
@@ -63,50 +79,48 @@ int main(int, char**)
 
 		//Clear the renderer
 		SDL_RenderClear(renderer);
-
 		
 		//do drawing here
 		SDL_LockTexture(fractalTexture, NULL, (void**)&pixels, &pitch);
 
-		int maxIterations = 100;
+		int iterations = 25;
+		int layers = 5;
+		for (int layer = 0; layer <= layers; layer++)
+		{
 
-		for (int pixelY = 0; pixelY < windowHeight; pixelY++) {
-			//Map the y coordinate into the range minY to maxY
-			double y0 = ((double)pixelY / windowHeight) * (maxY - minY) + minY;
+			iterations = 25 + (25 * layer);
 
-			for (int pixelX = 0; pixelX < windowWidth; pixelX++){
+			for (int pixelY = 0; pixelY < windowHeight; pixelY++) {
+				//Map the y coordinate into the range minY to maxY
+				double y0 = ((double)pixelY / windowHeight) * (maxY - minY) + minY;
 
-				// Map the x coordinate into the range minX to maxX
-				double x0 = ((double)pixelX / windowWidth) * (maxX - minX) + minX;
+				for (int pixelX = 0; pixelX < windowWidth; pixelX++) {
 
-				unsigned int pixelPosition = pixelY * (pitch / pixelFormat->BytesPerPixel) + pixelX;
+					// Map the x coordinate into the range minX to maxX
+					double x0 = ((double)pixelX / windowWidth) * (maxX - minX) + minX;
 
-				// iterate to find the value of the pixel for the fractal
-				double x = 0, y = 0;
-				int iter = 0;
+					unsigned int pixelPosition = pixelY * (pitch / pixelFormat->BytesPerPixel) + pixelX;
 
-				while ((x*x) + (y*y) <= 4 && iter < maxIterations)
-				{
-					double nextX = (x*x) - (y*y) + x0;
-					y = (2 * x*y) + y0;
-					x = nextX;
-					iter++;
+					// iterate to find the value of the pixel for the fractal
+					int iter = Mandelbrot_fractal(x0, y0, iterations);
+					// Write the pixel
+					// work out the color for the pixel
+					Uint32 colour = SDL_MapRGB(pixelFormat, 255, 255, 255);// rand() % 255, rand() % 255, rand() % 255);
+					bool set = true;
+
+					if (iter > ((float)iterations * 0.90f))
+						colour = SDL_MapRGB(pixelFormat, 200+((55/layers)*layer), 200, 200);
+					else if (iter > ((float)iterations * 0.2f))
+						colour = SDL_MapRGB(pixelFormat, 100, 100+((155 / layers)*layer), 100);
+					else if (iter > ((float)iterations * 0.1f))
+						colour = SDL_MapRGB(pixelFormat, 50 , 50 , 50 + ((205 / layers)*layer));
+					else
+						set = false;
+
+					if(set || layer == 0)
+						// Now we can set the pixel(s) we want.
+						pixels[pixelPosition] = colour;
 				}
-
-				// Write the pixel
-
-				// work out the color for the pixel
-				Uint32 colour = SDL_MapRGB(pixelFormat, 255, 255, 255);// rand() % 255, rand() % 255, rand() % 255);
-
-				if (iter > ((float)maxIterations * 0.99f))
-					colour = SDL_MapRGB(pixelFormat, 200, 200, 200);
-				else if (iter > ((float)maxIterations * 0.2f))
-					colour = SDL_MapRGB(pixelFormat, 100, 100, 100);
-				else if (iter > ((float)maxIterations * 0.1f))
-					colour = SDL_MapRGB(pixelFormat, 50, 50, 50 );
-
-				// Now we can set the pixel(s) we want.
-				pixels[pixelPosition] = colour;
 			}
 		}
 
