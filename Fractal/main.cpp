@@ -3,9 +3,15 @@
 // http://www.willusher.io/pages/sdl2/
 
 #include "stdafx.h"
+#include "main.h"
+
+int WidthOfTextureInBytes;
 
 int windowWidth = 800;
 int windowHeight = 800;
+
+//Controls the game loop
+bool bWantsToQuit = false;
 
 int main(int, char**) 
 {
@@ -42,9 +48,6 @@ int main(int, char**)
 	//this stores the pixels retrieved from the texture
 	Uint32 * pixels = NULL;
 
-	//the pitch is the width of the texture in bytes
-	int pitch;
-
 	//Create a texture, STREAMING means that we will update the texture 
 	SDL_Texture * fractalTexture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STREAMING, windowWidth, windowHeight);
 
@@ -54,35 +57,26 @@ int main(int, char**)
 	// Minimum and maximum coordinates for the fractal
 	const double minX = -2, maxX = 1, minY = -1.5, maxY = 1.5;
 
-	//Controls the game loop
-	bool quit = false;
-
 	//Holds events coming from SDL
 	SDL_Event event;
 
-	//Game Loop, while quit is false
-	while (!quit)
+	while (!bWantsToQuit)
 	{
-		//Check for Messages from SDL
 		while (SDL_PollEvent(&event)) 
 		{
-			//quit is generated when red cross is clicked
-			if (event.type == SDL_QUIT) 
-			{
-				quit = true;
-			}
+			CheckForQuit(event);
 		}
 		//Clear the renderer
 		SDL_RenderClear(renderer);
 
 		//do drawing here
-		SDL_LockTexture(fractalTexture, NULL, (void**)&pixels, &pitch);
+		SDL_LockTexture(fractalTexture, NULL, (void**)&pixels, &WidthOfTextureInBytes);
 
 		for (int pixelY = 0; pixelY < windowHeight; pixelY++)
 		{
 			for (int pixelX = 0; pixelX < windowWidth; pixelX++)
 			{
-				unsigned int pixelPosition = pixelY * (pitch / pixelFormat->BytesPerPixel) + pixelX;
+				unsigned int pixelPosition = pixelY * (WidthOfTextureInBytes / pixelFormat->BytesPerPixel) + pixelX;
 
 				double x0 = ((double)pixelX / windowWidth) * (maxX - minX) + minX;
 				double y0 = ((double)pixelY / windowHeight) * (maxY - minY) + minY;
@@ -146,4 +140,24 @@ int main(int, char**)
 	SDL_Quit();
 
 	return 0;
+}
+
+void CheckForQuit(SDL_Event &event)
+{
+	switch (event.type)
+	{
+	case SDL_QUIT:
+	{
+		bWantsToQuit = true;
+		break;
+	}
+	case SDL_KEYDOWN:
+	{
+		if (event.key.keysym.sym == SDLK_ESCAPE)
+		{
+			bWantsToQuit = true;
+		}
+		break;
+	}
+	}
 }

@@ -156,6 +156,7 @@ xcopy /Y /D /i "..\Libraries\SDL2_image-2.0.2\lib\x64\*.dll" "$(OutDir)\*.dll"</
     <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="main.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
