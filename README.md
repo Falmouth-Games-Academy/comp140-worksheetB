@@ -36,6 +36,5 @@ The circuit will be set up something like this
 
 ![PCS2000 Circuit](pcs_v2_bb.png)
 
-frsit protype
-![Prototype](pcs_proto.jpg)
+
 
