@@ -1,8 +1,22 @@
-UI - Lifes counter, point counter, bullet counter (indicates when player will have to reload the gun)
+Game:
 
+Game will have only 'endless' mode with enemies comming all the time untill player dies.
 Player needs to shoot enemies (spawning on the top of the screen) before they reach base (bottom of the screen).
+Player will get the points for killing the enemies, lose lives when they come to the bottom of the screen and loose ammo while shooting (player will have to reload the gun when out of ammo).
+Player will have to move controller around to aim, press the trigger to shoot, getting the feedback with the motor and reload by pressign a button to release magazine and pushing it back.
+UI shows lives counter, points counter and bullet counter (indicates when player will have to reload the gun).
 
-Player will have to move contreoller around to aim, press the button, getting the feedback with the motor, to 
-shoot and reload by pressign a button and pushing magazine upwards.
+Controller Research:
 
-Parts required: Accelerometer/gyroscope, button, IR sensor, motor, arduino and other components to make it work.
+My controller and game idea (before I have realised it) is deeply inspired on a controller to lod game called "Duck Hunt" Which utalized a handgun like controller to shoot flying away ducks.
+In the game player was supposed to aim at the ducks on screen and press the button in order to shoot.
+The controller was very simple two piece device built with a button that was for a player input to shoot and a light sensor which pointed at the right spot on screen detected a hitbox of a duck.
+
+
+Controller:
+
+Controller will be gunshaped with few movable components like a trigger and gun's magazine. 
+Controller needs to have accelerometer/gyroscope, motor, IR proximity sensor, trigger (made of a button, a spring and a plastic trigger) built in.
+
+
+<img src="GNC.jpg" alt="Game And Controller">
