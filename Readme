@@ -12,8 +12,9 @@ Controller Research:
 My controller (before I have realised it) is deeply inspired on a controller style to old game called "Duck Hunt" which utalized handgun-like controller to shoot flying away ducks.
 In the game player was supposed to aim at the ducks on screen and press the button in order to shoot.
 The controller was very simple two piece device built with a button that was for a player's input to shoot and a light sensor which pointed at the right spot on screen detected a hitbox of a duck.
-I have varried from idea of using light sensor to use accelerometer because I liked the idea of using movement to just move things around on screen
-As it turns out current OLED and LED screens do not behave like old CRT monitors/tv's making it impossible to use light detector sensors so my way of implementing a controller can be a nice upgrade.
+I have varried from idea of using light sensor to use accelerometer because I liked the idea of using movement to just move things around on screen.
+As it turns out current OLED and LED screens do not behave like old CRT monitors/tv's making it impossible to use light detector sensors (possible but would require screen-sensor synchronisation) so my way of implementing a controller can be a nice upgrade.
+My version of a controller could be working in many different scenarios e.g. if the player couldnt point at the screen because of not enough space in the room or not possesing a CRT monitor/tv.
 
 
 Controller:
