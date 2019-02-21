@@ -4,6 +4,25 @@
 
 #include "stdafx.h"
 
+Uint32 GetFractalColour(double x, double y, SDL_PixelFormat* format)
+{
+	double iterX = x; // loop with these so the originals stay
+	double iterY = y;
+
+	int i = 0;
+	do{
+		if (iterX*iterX + iterY * iterY >= 4)
+		{
+			return SDL_MapRGB(format, 255, 255 - i, 255 - i);
+		}
+		double bufferX = iterX;
+		iterX = iterX * iterX - iterY * iterY + x;
+		iterY = 2 * bufferX * iterY + y;
+		i++;
+	} while (i < 200);
+	return SDL_MapRGB(format, 0, 0, 0); //don't know if there is a default for black or not
+}
+
 int main(int, char**) 
 {
 	int windowWidth = 800;
@@ -70,22 +89,25 @@ int main(int, char**)
 
 
 
-		for (int pixelY = 0; pixelY < windowHeight; pixelY++) {
+		for (double pixelY = 0; pixelY < windowHeight; pixelY++) {
 			// TODO: Map the y coordinate into the range minY to maxY
-			//double y0 =
-			for (int pixelX = 0; pixelX < windowWidth; pixelX++){
+			double y0 = pixelY / windowHeight * (maxY - minY) + minY;
+			for (double pixelX = 0; pixelX < windowWidth; pixelX++){
 
 				// TODO: Map the x coordinate into the range minX to maxX
-				//double x0 =
+				double x0 = pixelX / windowWidth * (maxX - minX) + minX;
 
 				unsigned int pixelPosition = pixelY * (pitch / pixelFormat->BytesPerPixel) + pixelX;
 
 				// TODO: implement the algorithm to colour a single pixel (x0, y0) of the fractal
+
+				Uint32 colour = GetFractalColour(x0, y0, pixelFormat);
+
 				// The code below simply fills the screen with random pixels
 
 				// Write the pixel
 				// TODO: change this for desired pixel colour value
-				Uint32 colour = SDL_MapRGB(pixelFormat, rand()%255, rand() % 255, rand() % 255);
+				//Uint32 colour = SDL_MapRGB(pixelFormat, 255, 255, 0);
 				// Now we can set the pixel(s) we want.
 				pixels[pixelPosition] = colour;
 			}
@@ -109,3 +131,4 @@ int main(int, char**)
 
 	return 0;
 }
+
