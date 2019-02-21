@@ -6,11 +6,14 @@ Player will get the points for killing the enemies, lose lives when they come to
 Player will have to move controller around to aim, press the trigger to shoot, getting the feedback with the motor and reload by pressign a button to release magazine and pushing it back.
 UI shows lives counter, points counter and bullet counter (indicates when player will have to reload the gun).
 
+
 Controller Research:
 
-My controller and game idea (before I have realised it) is deeply inspired on a controller to lod game called "Duck Hunt" Which utalized a handgun like controller to shoot flying away ducks.
+My controller (before I have realised it) is deeply inspired on a controller style to old game called "Duck Hunt" which utalized handgun-like controller to shoot flying away ducks.
 In the game player was supposed to aim at the ducks on screen and press the button in order to shoot.
 The controller was very simple two piece device built with a button that was for a player input to shoot and a light sensor which pointed at the right spot on screen detected a hitbox of a duck.
+I have varried from idea of using light sensor to use accelerometer because I liked the idea of using movement to just move things around on screen
+As it turns out current OLED and LED screens do not behave like old CRT monitors/tv's making it impossible to use light detector sensors so my way of implementing a controller can be a nice upgrade.
 
 
 Controller:
@@ -19,7 +22,4 @@ Controller will be gunshaped with few movable components like a trigger and gun'
 Controller needs to have accelerometer/gyroscope, motor, IR proximity sensor, trigger (made of a button, a spring and a plastic trigger) built in.
 
 
-
-<img src="gnc.png" width="400">
-![alt text](https://raw.githubusercontent.com/Blekiusz/comp140-worksheetB/master/gnc.png "Game")
-
+See "gnc.png" for a vidual.
