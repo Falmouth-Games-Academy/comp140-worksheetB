@@ -1,5 +1,5 @@
 # comp140-worksheetB
-### Part A
+## Part A
 For my Arduino project I would like to create a pancake cooking/flipping simulator. 
 The player will be in control of 2 frying pans and 2 hobs, a jug and a whisk. 
 The frying pans will be use to flip the pancakes, the hobs to control the cooking temperature,
@@ -25,8 +25,8 @@ The player will have no control of the cooking temperature and it will gradually
 #### Time attack
 Same as standard except the user will have to cook as many pancakes as they can over a period of time.
 
-### Part B
-Research. 
+## Part B
+### Research. 
 
 #### Yo, bartender.
 Yo, Bartender is a game that simulates the player mixing drink cocktails. It uses actual plastic bottles to simulate pouring different liquids in to a joystick game. It uses joysticks to control the position of the bottles.
