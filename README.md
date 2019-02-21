@@ -28,11 +28,11 @@ Same as standard except the user will have to cook as many pancakes as they can 
 ### Part B
 Research. 
 
-###### Yo, bartender.
+#### Yo, bartender.
 Yo, Bartender is a game that simulates the player mixing drink cocktails. It uses actual plastic bottles to simulate pouring different liquids in to a joystick game. It uses joysticks to control the position of the bottles.
 To track the pouring of the bottles they used WII remotes and to control the position of the bottle they attached the glass to a joy stick. On top of that they created a wooden table with buttons to tell if the bottles are in use.
 
-###### Controller 
+#### Controller 
 The pancake Sim will consist of frying pans for flipping the pancakes a jug for the mix and the whisk to mimic creating the pancake mixture.  There will also be hobs to control the cooking temperature and fire alarm for the case of the user setting fire to a pancake.
 
 For the design of the controller there will be a compact cooking top to house the frying pans and jug. On the front of the cooking top will be potentiometers for the nobs to control the cooking temperature. The frying pan will use a accelerometer/gyroscope to detect if the user is flipping the pancake and a light dependent resistor to detect if the frying pan is on the cooking top. I will also use accelerometer/gyroscope to track the movement and pour for the jug. The whisk will also house an accelerometer to detect if the player is whisking. For the fire alarm I will use a siren (with a 1k resistor to prevent it from being deafening) 
