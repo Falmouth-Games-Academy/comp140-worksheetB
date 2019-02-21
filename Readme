@@ -19,4 +19,6 @@ Controller will be gunshaped with few movable components like a trigger and gun'
 Controller needs to have accelerometer/gyroscope, motor, IR proximity sensor, trigger (made of a button, a spring and a plastic trigger) built in.
 
 
+
 <img src="gnc.png">
+
