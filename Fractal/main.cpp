@@ -4,6 +4,34 @@
 
 #include "stdafx.h"
 
+int GenerateFractal(int x0, int y0)
+{
+	std::list<int> x;
+	std::list<int> y;
+	for (int i = 0; i < 200; i++)
+	{
+		if (i == 0)
+		{
+			x.push_back(x0);
+			y.push_back(y0);
+		}
+		int currentX = x.front();
+		int currentY = y.front();
+		if (i > 0)
+		{
+			if ((currentX ^ 2) + (currentX ^ 2) >= 4)
+			{
+				return 255;
+			}
+		}
+		int nextX = (currentX ^ 2) - (currentX ^ 2) + x0;
+		int nextY = (2 * currentX * currentY) + y0;
+		x.push_front(nextX);
+		y.push_front(nextX);
+	}
+	return 0;
+}
+
 int main(int, char**) 
 {
 	int windowWidth = 800;
@@ -72,34 +100,23 @@ int main(int, char**)
 
 		for (int pixelY = 0; pixelY < windowHeight; pixelY++) {
 			// TODO: Map the y coordinate into the range minY to maxY
-			float yMax = 1.5f;
-			float yMin = -1.5f;
-			double y0 = (pixelY / windowHeight) * (yMax - yMin) + yMin;
+			double y0 = (pixelY / windowHeight) * (maxY - minY) + minY;
 			for (int pixelX = 0; pixelX < windowWidth; pixelX++){
 
 				// TODO: Map the x coordinate into the range minX to maxX
-				float xMax = 1.0f;
-				float xMin = -2.0f;
-				double x0 = (pixelX / windowWidth) * (xMax - xMin) + xMin;
+				double x0 = (pixelX / windowWidth) * (maxX - minX) + minX;
 
 				unsigned int pixelPosition = pixelY * (pitch / pixelFormat->BytesPerPixel) + pixelX;
 
 				// TODO: implement the algorithm to colour a single pixel (x0, y0) of the fractal
-				int yi = 0;
-				int xi = 0;
-				for (int i = 0; i < 200; i++)
-				{
-					xi = (xi ^ 2) - (yi ^ 2) + x0;
-					yi = (2 * xi * yi) + y0;
-				}
-				if ((xi ^ 2) * (yi ^ 2) >= 4)
-				{
-					// Write the pixel
-					// TODO: change this for desired pixel colour value
-					Uint32 colour = SDL_MapRGB(pixelFormat, rand() % 255, rand() % 255, rand() % 255);
-					// Now we can set the pixel(s) we want.
-					pixels[pixelPosition] = colour;
-				}
+
+
+				// Write the pixel
+				// TODO: change this for desired pixel colour value
+				int colourValue = GenerateFractal(x0, y0);
+				Uint32 colour = SDL_MapRGB(pixelFormat, colourValue, colourValue, colourValue);
+				// Now we can set the pixel(s) we want.
+				pixels[pixelPosition] = colour;
 			}
 		}
 
