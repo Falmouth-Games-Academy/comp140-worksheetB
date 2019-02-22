@@ -71,12 +71,12 @@ int main(int, char**)
 
 
 		for (int pixelY = 0; pixelY < windowHeight; pixelY++) {
-			// TODO: Map the y coordinate into the range minY to maxY
-			//double y0 =
+			//Sets up Y variable value to a ragne between min and max range depending on a pixel
+			double y0 = pixelY / windowHeight * (maxY - minY) + minY;
 			for (int pixelX = 0; pixelX < windowWidth; pixelX++){
 
-				// TODO: Map the x coordinate into the range minX to maxX
-				//double x0 =
+				//Sets up X variable value to a ragne between min and max range depending on a pixel
+				double x0 = pixelY / windowWidth * (maxX - minX) + minX;
 
 				unsigned int pixelPosition = pixelY * (pitch / pixelFormat->BytesPerPixel) + pixelX;
 
