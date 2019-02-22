@@ -15,4 +15,4 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
-#include <list>
+#include <cmath>
