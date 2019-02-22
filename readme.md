@@ -3,7 +3,7 @@
 #### The Game
 The game intends to be a simple hot air balloon racing game with similar mechanics to Balloon Fight. You race predominantly vertically, with some horizontal parts, through checkpoints.
 You are able to set back opponents by landing on top of them while also flying through the ringed checkpoints. Managing your ascension, decline, and direction with the balloon burner peripheral.
-![alt text](http://oi68.tinypic.com/2i0437c.jpg "Game Diagram of hot air balloons flying through rings")
+![alt text]https://raw.githubusercontent.com/ByronCrowhurst/comp140-worksheetB/master/Donion%20rings.png "Game Diagram of hot air balloons flying through rings")
 
 The core game mechanics are:
 - The ascension and decline mechanics.
@@ -23,7 +23,7 @@ The controller aims to be a replica of a hot air balloon burner without the fire
 A potentiometer will be attached to each burner and used to control the "gas." A button will be used for the "spark" to "light" the burner leading to more authenticity.
 The burner will be mounted on a stand which you will be able to tilt forwards and backwards to move the balloon left and right. This will be achieved by using an accelerometer to track the momentum of the burner.
 The controller will be 3D printed and smaller than a real life burner.
-![alt-text](http://oi64.tinypic.com/sm9avp.jpg "Annotated hot air balloon model")
+![alt-text](https://raw.githubusercontent.com/ByronCrowhurst/comp140-worksheetB/master/Annotated%20model.png "Annotated hot air balloon model")
 
 Models for reference:
 https://www.turbosquid.com/3d-models/hot-air-balloon-c4d/883913
