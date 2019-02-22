@@ -13,13 +13,13 @@ As for the game controller itself, I have been thinking about ways to implement 
 
 The layout will consist of 2 parts: the right side will contain the movement controls, while the left side will control the ships' components.
 
-For the Rotation and/or movement part, I intend to use either a Gyroscope (for rotations) attached to a tensiometer (for acceleration) or 4 tensiomeneters controlling the 3 rotational axis and the movement speed.
+For the Rotation and/or movement part, I intend to use either a Gyroscope (for rotations) attached to a potentiometer (for acceleration) or 4 potentiometer controlling the 3 rotational axis and the movement speed.
 
 For the ship components controls' I intend to use, for starters, a single button layout for firing the weapons.
 
 However, it should be noted that while the first part of the controller contains much of the most important controls, it may be cumbersome to use them all at once. Therefore, I was thinking about switching the movement controls to the second part of the controller to balance it out.
 
-As for the exterior design of the controller, I was thinking about having either a button panel (for controlling the weapons) and some sort of outer casing (or fighter-style handle) for the gyro and acceleration tensiometer. Of course, that would mean that it would be able to rotate along all 3 axis as well as move forwards or backwards to determine the acceleration speed. As this may be cumbersome, I have also prepared an alternative layout.
+As for the exterior design of the controller, I was thinking about having either a button panel (for controlling the weapons) and some sort of outer casing (or fighter-style handle) for the gyro and acceleration potentiometer. Of course, that would mean that it would be able to rotate along all 3 axis as well as move forwards or backwards to determine the acceleration speed. As this may be cumbersome, I have also prepared an alternative layout.
 
 The second layout I had in mind differs in only one aspect: the movement controls are next to the button panel, possibly as a handle that needs to be pushed forward or backwards to accelerate and deccelerate, respectively.
 
@@ -51,7 +51,7 @@ As for the biggest setbacks I expect to encounter, I could name:
 
 [HOTAS controllers](https://www.windowscentral.com/best-hotas-controllers-vr): This controller is the go-to for the space exploration-combat-trading game Elite: Dangerous, which makes use of 2 main stick that control ship movement, rotation and weapon aiming. They also have several buttons to facilitate controlling other ship systems with ease. While I could not possibly hope to achieve a design as ergonomic or aesthetically pleasing as that, I have taken some inspiration from it mainly due to the ease of usage and immersion factor it provides to the player (The controller is visually identical to the in-game controls of the player).
 
-[Logitech Flight Simulator Throttle](https://www.logitechg.com/en-gb/products/flight/flight-simulator-throttle-quadrant.html): This controller is similar to what I hope to use for the acceleration controller of the ship, using a tensiometer to determine the thrust given to the ship. One possible usage is to have 0 thrust at the middle position of the tensiometer and positive values when turning it one way and negative thrust when turning it the other way.
+[Logitech Flight Simulator Throttle](https://www.logitechg.com/en-gb/products/flight/flight-simulator-throttle-quadrant.html): This controller is similar to what I hope to use for the acceleration controller of the ship, using a potentiometer to determine the thrust given to the ship. One possible usage is to have 0 thrust at the middle position of the potentiometer and positive values when turning it one way and negative thrust when turning it the other way.
 
 [Logitech Flight Simulator Switch Controller](https://www.logitechg.com/en-gb/products/flight/flight-simulator-switch-panel.html): The switch panel here presents ample control options for various in-game settings. While I will certainly not make use of as many features, I hope to have some immersive features on my panel, such as LED's, buttons or even switches that control different aspects of the ship.
 
@@ -61,13 +61,13 @@ As for the biggest setbacks I expect to encounter, I could name:
 
 2 Sticks layout (separate thrust and rotation)
 * Gyroscope x 1
-* Tensiometer x 1
+* Potentiometer x 1
 * LED's x 4-8
 * Button x 2-4
 * Switches x 2 - OPTIONAL
 
 4 - Tensiometer layout (3 for rotations, 1 for thrust)
-* Tensiometer x 4
+* Potentiometer x 4
 * LED's x 4-8
 * Button x 2-4
 * Switches x 2 - OPTIONAL
