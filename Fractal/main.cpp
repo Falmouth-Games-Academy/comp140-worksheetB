@@ -4,6 +4,19 @@
 
 #include "stdafx.h"
 
+
+double x, y, length, angle; // Members
+
+double getX2() // Getting the second x coordinate based on the angle and length
+{
+	return x + cos(angle*(M_PI / 180.0))*length;
+}
+
+double getY2() // Getting the second y coordinate based on the angle and length
+{
+	return y + sin(angle*(M_PI / 180.0))*length;
+}
+
 int main(int, char**) 
 {
 	int windowWidth = 800;
@@ -85,9 +98,12 @@ int main(int, char**)
 
 				// Write the pixel
 				// TODO: change this for desired pixel colour value
-				Uint32 colour = SDL_MapRGB(pixelFormat, rand()%255, rand() % 255, rand() % 255);
+				SDL_SetRenderDrawColor(renderer, 100, 255, 100, 255); // Setting the color of the line
+				SDL_RenderDrawLine(renderer, pixelX, pixelY, getX2(), getY2()); // Drawing the line
+				SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 				// Now we can set the pixel(s) we want.
-				pixels[pixelPosition] = colour;
+				//
+				//pixels[pixelPosition] = colour;
 			}
 		}
 
