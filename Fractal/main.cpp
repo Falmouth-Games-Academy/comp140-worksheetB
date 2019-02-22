@@ -4,6 +4,20 @@
 
 #include "stdafx.h"
 
+int findMandelbrot(double x0, double y0, int maxIterations)
+{
+	int i = 0;
+	double x = 0.0, y = 0.0;
+	while (i < maxIterations && x * x + y * y < 4.0)
+	{
+		double temp = x * x - y * y + x0;
+		y = 2.0 * x * y + y0;
+		x = temp;
+		i++;
+	}
+	return i;
+}
+
 int main(int, char**) 
 {
 	int windowWidth = 800;
@@ -72,11 +86,11 @@ int main(int, char**)
 
 		for (int pixelY = 0; pixelY < windowHeight; pixelY++) {
 			// TODO: Map the y coordinate into the range minY to maxY
-			//double y0 =
+			double y0 = pixelY / windowHeight * (maxY - minY) + minY;
 			for (int pixelX = 0; pixelX < windowWidth; pixelX++){
 
 				// TODO: Map the x coordinate into the range minX to maxX
-				//double x0 =
+				double x0 = pixelX / windowHeight * (maxX - minX) + minX;
 
 				unsigned int pixelPosition = pixelY * (pitch / pixelFormat->BytesPerPixel) + pixelX;
 
@@ -85,7 +99,8 @@ int main(int, char**)
 
 				// Write the pixel
 				// TODO: change this for desired pixel colour value
-				Uint32 colour = SDL_MapRGB(pixelFormat, rand()%255, rand() % 255, rand() % 255);
+				int mandelbrot = findMandelbrot(x0, y0, 255);
+				Uint32 colour = (mandelbrot >= 9) ? SDL_MapRGB(pixelFormat, 255 - mandelbrot, 255 - mandelbrot, 255 - mandelbrot / 0.7) : SDL_MapRGB(pixelFormat, 0, 0, 0);
 				// Now we can set the pixel(s) we want.
 				pixels[pixelPosition] = colour;
 			}
