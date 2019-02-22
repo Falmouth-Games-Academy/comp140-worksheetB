@@ -21,4 +21,4 @@ The player will operate the nanobot using a knob and a button, the knob will rot
 The teddy bear is gonna have two DC motors in his arms and an infrared proximity sensor in his mouth. If his tissue becomes damaged in the game by either the player or disease, the motors are gonna activate and the bear is gonna start freaking out in pain and moving his arms frantically. To calm him down, the player will have to press an anaesthetic mask to his mouth for a set period of time. The bear will then slowly stop moving as if he's falling asleep.
 
 #### Design of the teddy bear controller:
-[!alt text[(https://github.com/JoachimRayski/comp140-worksheetB/blob/master/ControllerDesign.png)]]
+![alt text](https://github.com/JoachimRayski/comp140-worksheetB/blob/master/ControllerDesign.png)
