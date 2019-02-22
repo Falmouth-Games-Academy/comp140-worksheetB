@@ -29,6 +29,8 @@ Finally, I intend to attach several LED's to the second part to display warnings
 
 The image above represents one of the layout ideas I had in mind, with separate controls for rotation and movement, while the image below illustrates a 3D prototype I put together just to illustrate the style I was looking to achieve. Then again, the style is subject to change, as I will need to research the 3D printing solutions I can make use of.
 
+It should be noted that the 3D stick model contains the LED's at the top for different warnings and a big red button that could be used for firing the ship's weapons.
+
 ![Stick idea](https://github.com/Powll/comp140-worksheetB/blob/master/Images/Controller.png "Stick idea")
 
 ### The game itself
