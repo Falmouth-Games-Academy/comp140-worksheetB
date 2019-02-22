@@ -4,7 +4,7 @@
 
 #include "stdafx.h"
 
-int GenerateFractal(double x0, double y0)
+int GenerateFractal(double x0, double y0, float multiplier)
 {
 	double tempX = x0;
 	double tempY = y0;
@@ -19,7 +19,7 @@ int GenerateFractal(double x0, double y0)
 		}
 		double tempXcopy = tempX;
 		tempX = std::pow(tempX, 2) - std::pow(tempY, 2) + x0;
-		tempY = (2 * tempXcopy * tempY) + y0;
+		tempY = (multiplier * tempXcopy * tempY) + y0;
 		i++;
 	} while (i < 200);
 	return 0;
@@ -29,6 +29,7 @@ int main(int, char**)
 {
 	int windowWidth = 1000;
 	int windowHeight = 1000;
+	float fractalMultiplier;
 	//Initialise the Video Part of SDL2
 	if (SDL_Init(SDL_INIT_VIDEO) != 0) {
 		//Print out an error message to the screen if this fails
@@ -74,6 +75,8 @@ int main(int, char**)
 	//Game Loop, while quit is false
 	while (!quit)
 	{
+		std::cout << "Enter the fractal multiplier: ";
+		std::cin >> fractalMultiplier;
 		//Check for Messages from SDL
 		while (SDL_PollEvent(&event)) {
 			//quit is generated when red cross is clicked
@@ -89,23 +92,18 @@ int main(int, char**)
 		//do drawing here
 		SDL_LockTexture(fractalTexture, NULL, (void**)&pixels, &pitch);
 
-
-
 		for (double pixelY = 0; pixelY < windowHeight; pixelY++) {
-			// TODO: Map the y coordinate into the range minY to maxY
+			// Map the y coordinate into the range minY to maxY
 			double y0 = pixelY / windowHeight * (maxY - minY) + minY;
 			for (double pixelX = 0; pixelX < windowWidth; pixelX++){
 
-				// TODO: Map the x coordinate into the range minX to maxX
+				// Map the x coordinate into the range minX to maxX
 				double x0 = pixelX / windowWidth * (maxX - minX) + minX;
 
 				unsigned int pixelPosition = pixelY * (pitch / pixelFormat->BytesPerPixel) + pixelX;
 
-				// TODO: implement the algorithm to colour a single pixel (x0, y0) of the fractal
-
 				// Write the pixel
-				// TODO: change this for desired pixel colour value
-				int colourValue = GenerateFractal(x0, y0);
+				int colourValue = GenerateFractal(x0, y0, fractalMultiplier);
 				Uint32 colour = SDL_MapRGB(pixelFormat, colourValue, 0, 0);
 				// Now we can set the pixel(s) we want.
 				pixels[pixelPosition] = colour;
