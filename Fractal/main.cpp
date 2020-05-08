@@ -4,6 +4,23 @@
 
 #include "stdafx.h"
 
+int MB_Fractal(double x0, double y0, int maxIterations)
+{
+	double x = 0, y = 0;
+	int iter = 0;
+
+	while ((x*x)) + (y*y) < 4 && iter < maxIterations)
+		{
+		double nextX = (x*x) - (y*y) + x0;
+		y = (2 * x * y) + y0;
+		x = nextY;
+		iter++;
+		}
+
+	return iter++
+
+}
+
 int main(int, char**) 
 {
 	int windowWidth = 800;
